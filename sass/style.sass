@@ -1,0 +1,388 @@
+$text_color_dark: #000000
+$text_color_light: #ffffff
+$active_color: #FDCD70
+$whatsapp_button: #12AF0A
+$telegram_button: #33ABE0
+
+*
+	box-sizing: border-box
+
+body 
+	color: $text_color_light
+	font-family: 'Roboto Light', sans-serif
+	font-size: 10px
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
+a
+	text-decoration: none
+a:hover
+	text-decoration: none	
+
+.button
+	padding: 14px 25px
+	border: none
+	border-radius: 37px
+	background-color: $active_color
+	box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25)
+	color: $text_color_dark
+	font-size: 1.6em
+	line-height: 16px
+	&:hover
+		background-color: darken($active_color, 8%)
+		box-shadow: none
+		cursor: pointer
+	&:focus
+		outline: none
+	&:active
+		background-color: $active_color
+	&_whatsapp
+		padding: 5px 10px
+		height: 70px
+		display: flex
+		align-items: center
+		background-color: $whatsapp_button
+		&:hover
+			background-color: darken($whatsapp_button, 8%)
+			box-shadow: none
+			cursor: pointer
+		&:focus
+			outline: none
+		&:active
+			background-color: $whatsapp_button
+	&_site
+		padding: 25px 0px
+		display: block
+		background-color: $text_color_light
+		font-family: 'Roboto Bold', sans-serif
+		font-size: 1.4em
+		text-align: center
+		&:hover
+			background-color: darken($text_color_light, 8%)
+			box-shadow: none
+			cursor: pointer
+		&:focus
+			outline: none
+		&:active
+			background-color: $text_color_light
+	&_telegram
+		padding: 5px 10px
+		height: 70px
+		display: flex
+		align-items: center
+		background-color: $telegram_button
+		&:hover
+			background-color: darken($telegram_button, 8%)
+			box-shadow: none
+			cursor: pointer
+		&:focus
+			outline: none
+		&:active
+			background-color: $telegram_button
+
+.header
+	&-pages
+		padding-top: 20px
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: space-between
+		&__page
+			height: 6px
+			flex-basis: 11.5%
+			background: #3F3F3F
+			border-radius: 3px
+			&_active
+				background: #ffffff
+
+.page
+	display: none
+	height: 0%
+	&-active
+		display: block
+	&-slider
+		margin-top: 50px
+
+.page1
+	&-content
+		margin-top: 40vh
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 3.6em
+			line-height: 42px
+		&__subtitle
+			margin-top: 20px
+			font-size: 1.8em
+			font-weight: 400
+
+.page2
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+		&__list
+			width: 92%
+			margin-top: 10px
+		&__listElement
+			font-size: 1.8em
+			line-height: 23px
+	&-warning
+		margin-top: 35px
+		&__text
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 24px
+
+.page3
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+		&__subtitle
+			width: 90%
+			margin-top: 10px
+			font-size: 1.8em
+			line-height: 23px
+		&__subtitle2
+			margin-top: 20px
+	&-bottomContent
+		margin-top: 35px
+		&__text
+			width: 92%
+			font-size: 1.8em
+			line-height: 23px
+	&-contacts
+		margin-top: 40px
+		&__button
+			&::before
+				content: ''
+				position: absolute
+				left: 35px
+				display: inline-block
+				vertical-align: middle
+				width: 60px
+				height: 60px
+				background: url(../img/social/whatsapp.png) no-repeat center
+				background-size: cover
+		span
+			width: 100%
+			text-align: center
+			position: relative
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 0.9em
+			color: $text_color_light
+				
+
+.page4
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+		&__subtitle
+			width: 90%
+			margin-top: 10px
+			font-size: 1.8em
+			line-height: 23px
+	&-yoursite
+		margin-top: 30px
+	&-bottomContent
+		&__text
+			margin-top: 25px
+			font-size: 1.8em
+			line-height: 23px
+	&-contacts
+		margin-top: 40px
+		&__button
+			&::before
+				content: ''
+				position: absolute
+				left: 15px
+				display: inline-block
+				vertical-align: middle
+				width: 60px
+				height: 60px
+				background-size: cover
+			padding: 5px 30px
+		&__text
+			margin-top: 25px
+			font-size: 1.8em
+			line-height: 23px
+		span
+			width: 100%
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 0.9em
+			color: $text_color_light
+			text-align: center
+		.button_telegram
+			margin-top: 15px
+			&::before
+				background: url(../img/social/telegram.png) no-repeat center
+		.button_whatsapp
+			&::before
+				background: url(../img/social/whatsapp.png) no-repeat center
+
+				
+
+.page5
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+		&__subtitle
+			width: 90%
+			margin-top: 10px
+			font-size: 1.8em
+			line-height: 23px
+	&-bottomContent
+		&__phones
+			margin-top: 30px
+			display: flex
+			align-items: center
+		&__phone
+			margin-right: 20px
+		&__text
+			margin-top: 25px
+			font-size: 1.8em
+			line-height: 23px
+	&-contacts
+		margin-top: 40px
+		&__button
+			&::before
+				content: ''
+				position: absolute
+				left: 35px
+				width: 60px
+				height: 60px
+				display: inline-block
+				background: url(../img/social/telegram.png) no-repeat center
+				background-size: cover
+				vertical-align: middle
+		span
+			width: 100%
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 0.9em
+			color: $text_color_light
+			text-align: center
+
+.page6
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+		&__title2
+			margin-top: 30px
+		&__subtitle
+			width: 90%
+			margin-top: 10px
+			font-size: 1.8em
+			line-height: 23px
+	&-content2
+		margin-top: 30px
+	&-contacts
+		margin-top: 40px
+		&__button
+			&::before
+				content: ''
+				position: absolute
+				left: 35px
+				width: 60px
+				height: 60px
+				display: inline-block
+				background: url(../img/social/whatsapp.png) no-repeat center
+				background-size: cover
+				vertical-align: middle
+		span
+			width: 100%
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 0.9em
+			color: $text_color_light
+			text-align: center
+
+.page7
+	padding-bottom: 300px
+	&-content
+		margin-top: 65px
+		&__title
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 2.4em
+			line-height: 28px
+	&-FAQ
+		margin-top: 27px
+		&__block
+			margin-top: 10px
+			padding: 25px
+			border: 1px solid $text_color_light
+			border-radius: 10px
+			&:first-child
+				margin-top: 0
+			&_active
+				.page7-FAQ__answer
+					display: block
+		&__question
+			width: 100%
+			max-width: 240px
+			font-family: 'Roboto Bold', sans-serif
+			font-size: 1.8em
+			line-height: 21px
+		&__answer
+			display: none
+			margin-top: 20px
+			font-size: 1.4em
+			line-height: 20px
+		&__toggle
+			display: inline-block
+			width: 10px
+
+.page8
+	&-content
+		margin-top: 65px
+		&__subtitle
+			width: 90%
+			margin-top: 20px
+			font-size: 1.8em
+			line-height: 23px
+
+.footer
+	position: fixed
+	bottom: 32px
+	left: 0
+	width: 100%
+	height: 115px
+	&-overlay
+		position: absolute
+		width: 100%
+		height: 100%
+		background: #1A1A1A
+		opacity: 0.9
+		&_filter
+	 		filter: blur(50px)
+	&-content
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+	&-video
+		width: 75px
+		height: 115px
+		background: black url(../img/footer/video-bg.png) no-repeat center
+		background-size: cover
+		border: 1px solid $text_color_light
+		border-radius: 10px
+	&-contact
+		&__text
+			margin-top: 10px
+			font-size: 1.2em
+			span
+				font-family: 'Roboto Bold', sans-serif

@@ -7,7 +7,7 @@ body {
   color: #ffffff;
   font-family: 'Roboto Light', sans-serif;
   font-size: 10px;
-  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background: black url(../img/main/bg.png) no-repeat 0% 0%;
   background-size: cover;
 }
 
@@ -70,6 +70,7 @@ a:hover {
 }
 
 .button_whatsapp:active {
+  outline: none;
   background-color: #12AF0A;
 }
 
@@ -124,9 +125,29 @@ a:hover {
   background-color: #33ABE0;
 }
 
-.header-pages {
-  padding-top: 20px;
+.header {
+  position: fixed;
+  top: 20px;
+  left: 0px;
   width: 100%;
+  z-index: 1;
+}
+
+.header-overlay {
+  position: absolute;
+  top: -20px;
+  width: 100%;
+  height: 50px;
+  background: #1A1A1A;
+  opacity: 0.9;
+}
+
+.header-overlay_filter {
+  -webkit-filter: blur(50px);
+          filter: blur(50px);
+}
+
+.header-pages {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,7 +173,7 @@ a:hover {
 
 .page {
   display: none;
-  height: 0%;
+  height: 80%;
 }
 
 .page-active {
@@ -161,6 +182,19 @@ a:hover {
 
 .page-slider {
   margin-top: 50px;
+}
+
+.page-slider__block {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.page-slider__block:active {
+  outline: none;
+}
+
+.page-slider__block:focus {
+  outline: none;
 }
 
 .page1-content {
@@ -184,7 +218,7 @@ a:hover {
 }
 
 .page2-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page2-content__title {
@@ -217,7 +251,7 @@ a:hover {
 }
 
 .page3-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page3-content__title {
@@ -277,7 +311,7 @@ a:hover {
 }
 
 .page4-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page4-content__title {
@@ -314,7 +348,7 @@ a:hover {
 .page4-contacts__button::before {
   content: '';
   position: absolute;
-  left: 15px;
+  left: 30px;
   display: inline-block;
   vertical-align: middle;
   width: 60px;
@@ -353,7 +387,7 @@ a:hover {
 }
 
 .page5-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page5-content__title {
@@ -418,7 +452,7 @@ a:hover {
 }
 
 .page6-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page6-content__title {
@@ -471,7 +505,7 @@ a:hover {
 }
 
 .page7-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page7-content__title {
@@ -519,8 +553,12 @@ a:hover {
   width: 10px;
 }
 
+.page8 {
+  padding-bottom: 300px;
+}
+
 .page8-content {
-  margin-top: 65px;
+  margin-top: 85px;
 }
 
 .page8-content__subtitle {
@@ -579,5 +617,14 @@ a:hover {
 
 .footer-contact__text span {
   font-family: 'Roboto Bold', sans-serif;
+}
+
+@media (max-width: 320px) {
+  .page4-contacts__button::before {
+    left: 20px;
+  }
+  .page4-contacts span {
+    font-size: 0.8em;
+  }
 }
 /*# sourceMappingURL=style.css.map */

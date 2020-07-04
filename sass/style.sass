@@ -11,7 +11,7 @@ body
 	color: $text_color_light
 	font-family: 'Roboto Light', sans-serif
 	font-size: 10px
-	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background: black url(../img/main/bg.png) no-repeat 0% 0%
 	background-size: cover
 a
 	text-decoration: none
@@ -48,6 +48,7 @@ a:hover
 		&:focus
 			outline: none
 		&:active
+			outline: none
 			background-color: $whatsapp_button
 	&_site
 		padding: 25px 0px
@@ -80,9 +81,21 @@ a:hover
 			background-color: $telegram_button
 
 .header
-	&-pages
-		padding-top: 20px
+	position: fixed
+	top: 20px
+	left: 0px
+	width: 100%
+	z-index: 1
+	&-overlay
+		position: absolute
+		top: -20px
 		width: 100%
+		height: 50px
+		background: #1A1A1A
+		opacity: 0.9
+		&_filter
+	 		filter: blur(50px)
+	&-pages
 		display: flex
 		align-items: center
 		justify-content: space-between
@@ -96,12 +109,19 @@ a:hover
 
 .page
 	display: none
-	height: 0%
+	height: 80%
 	&-active
 		display: block
 	&-slider
 		margin-top: 50px
-
+		&__block
+			border-radius: 50%
+			margin-right: 20px
+			&:active
+				outline: none
+			&:focus
+				outline: none
+				
 .page1
 	&-content
 		margin-top: 40vh
@@ -117,7 +137,7 @@ a:hover
 .page2
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -137,7 +157,7 @@ a:hover
 .page3
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -176,11 +196,10 @@ a:hover
 			font-size: 0.9em
 			color: $text_color_light
 				
-
 .page4
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -200,16 +219,16 @@ a:hover
 	&-contacts
 		margin-top: 40px
 		&__button
+			padding: 5px 30px
 			&::before
 				content: ''
 				position: absolute
-				left: 15px
+				left: 30px
 				display: inline-block
 				vertical-align: middle
 				width: 60px
 				height: 60px
 				background-size: cover
-			padding: 5px 30px
 		&__text
 			margin-top: 25px
 			font-size: 1.8em
@@ -228,12 +247,10 @@ a:hover
 			&::before
 				background: url(../img/social/whatsapp.png) no-repeat center
 
-				
-
 .page5
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -277,7 +294,7 @@ a:hover
 .page6
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -314,7 +331,7 @@ a:hover
 .page7
 	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -347,8 +364,9 @@ a:hover
 			width: 10px
 
 .page8
+	padding-bottom: 300px
 	&-content
-		margin-top: 65px
+		margin-top: 85px
 		&__subtitle
 			width: 90%
 			margin-top: 20px
@@ -386,3 +404,9 @@ a:hover
 			font-size: 1.2em
 			span
 				font-family: 'Roboto Bold', sans-serif
+
+@media (max-width: 320px)
+	.page4-contacts__button::before
+		left: 20px
+	.page4-contacts span
+		font-size: 0.8em

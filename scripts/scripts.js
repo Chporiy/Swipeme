@@ -76,9 +76,9 @@ $(document).ready(function () {
 
   const changeBodyBackgroungImage = (pageNumber) => {
     if (pageNumber == 1) {
-      $('body').css('background-image', 'url(../img/main/bg.png)')
+      $('body').css('background-image', 'url(./img/main/bg.png)')
     } else {
-      $('body').css('background-image', 'url(../img/main/bg2.png)')
+      $('body').css('background-image', 'url(./img/main/bg2.png)')
     }
   }
 

@@ -87,12 +87,10 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    if ($('body, html').scrollTop() <= 15) {
-      $('body, html').scrollTop(0);
+    if ($('body')[0].__overlayScrollbars__.scroll().position.y <= 15) {
+      $('body')[0].__overlayScrollbars__.scroll(0);
     } else {
-      $('body, html').animate({
-        scrollTop: 0
-      }, 100);
+      $('body')[0].__overlayScrollbars__.scroll(0, 100);
     }
   }
 
@@ -326,8 +324,10 @@ $(document).ready(function () {
   setCurrentPageClickHandler();
 
   $("body").overlayScrollbars({
+    clipAlways: false,
     scrollbars: {
-      visibility: 'hidden'
+      visibility: 'hidden',
+      touchSupport: false
     }
    });
 });

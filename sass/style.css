@@ -643,4 +643,10 @@ a:hover {
     font-size: 0.8em;
   }
 }
+
+@media (max-width: 320px) and (max-height: 500px) {
+  .page1-content {
+    margin-top: 60%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

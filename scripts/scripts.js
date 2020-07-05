@@ -4,8 +4,8 @@ $(document).ready(function () {
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider');
 
-  let currentPage = $('.page-active');
-  let documentWidth = $(document).width(),
+  let currentPage = $('.page-active'),
+    documentWidth = $(document).width(),
     oneThirdWidth = documentWidth / 2; 
   
   const showAnswer = (element) => {
@@ -26,6 +26,23 @@ $(document).ready(function () {
     return documentWidth - oneThirdWidth <= clientX && clientX <= documentWidth;
   }
 
+  const goToNewPage = (direction, currentPageNumber) => {
+    let newPageNumber;
+    
+    if (direction == 'left') {
+      if (currentPageNumber == 1) return false;
+
+      newPageNumber = currentPageNumber - 1;
+      changePage(newPageNumber);
+      changePageIndicator(newPageNumber);
+    } else {
+      if (currentPageNumber == 8) return false;
+
+      newPageNumber = currentPageNumber + 1;
+      changePage(newPageNumber);
+      changePageIndicator(newPageNumber);
+    }
+  }
   const setCurrentPageClickHandler = () => {
     currentPage.on('click', event => {
       clickPageHandler(event);
@@ -34,29 +51,16 @@ $(document).ready(function () {
 
   const clickPageHandler = (event) => {
     let clientX = event.clientX,
-      currentPageNumber = currentPage.data('number'),
-      newPageNumber;
-      
-    if (checkLeftSideClick(clientX)) {
-      if (currentPageNumber == 1) return false;
-
-      newPageNumber = currentPageNumber - 1;
-      changePage(newPageNumber);
-      changePageIndicator(newPageNumber);
-    }
+      currentPageNumber = currentPage.data('number'),     
+      direction = checkLeftSideClick(clientX) ? 'left' : checkRightSideClick(clientX) ? 'right' : null;
     
-    if (checkRightSideClick(clientX)) {
-      if (currentPageNumber == 8) return false;
-
-      newPageNumber = currentPageNumber + 1;
-      changePage(newPageNumber);
-      changePageIndicator(newPageNumber);
-    }
+      goToNewPage(direction, currentPageNumber);
   }
 
   const changePage = (newPageNumber) => {
     currentPage.toggleClass('page-active');
     currentPage.off('click');
+    currentPage.off('swipe');
     currentPage = $(`.page[data-number='${newPageNumber}']`);
     currentPage.toggleClass('page-active');
 
@@ -150,7 +154,6 @@ $(document).ready(function () {
    * @param {object} settings - Предварительные настройки для свайпа.
   */
   const swipe = function (element, settings) {
-    const isPointer = () => !!("PointerEvent" in window || (window.MSPointerEvent && window.navigator.msPointerEnabled));
     const isTouch = () => {
       return (
         !!(typeof window.orientation !== "undefined" || 
@@ -168,18 +171,13 @@ $(document).ready(function () {
       minTime: 50   // минимальное время, за которое должен быть совершен свайп (ms)
     }, settings);
 
-    let dir,                              // направление свайпа (horizontal, vertical)
-      swipeType,                        // тип свайпа (up, down, left, right)
+    let dir,                            // направление свайпа (horizontal)
+      swipeType,                        // тип свайпа (left, right)
       dist,                             // дистанция, пройденная указателем
-      // isMouse = false,                  // поддержка мыши (не используется для тач-событий)
-      // isMouseDown = false,              // указание на активное нажатие мыши (не используется для тач-событий)
       startX = 0,                       // начало координат по оси X (pageX)
       distX = 0,                        // дистанция, пройденная указателем по оси X
-      startY = 0,                       // начало координат по оси Y (pageY)
-      distY = 0,                        // дистанция, пройденная указателем по оси Y
       startTime = 0,                    // время начала касания
       support = {                       // поддерживаемые браузером типы событий
-        pointer: isPointer(),
         touch: isTouch()
       };
 
@@ -194,31 +192,13 @@ $(document).ready(function () {
     * Опредление доступных в браузере событий: pointer, touch.
     * @returns {object} - возвращает объект с названиями событий.
     */
-    const getSupportedEvents = function () {
+    const getSupportedEvents = () => {
       let events; 
       let support = {
-        pointer: isPointer(),
         touch: isTouch()
       };
       
       switch (true) {
-        case support.pointer:
-          events = {
-            type:   "pointer",
-            start:  "PointerDown",
-            move:   "PointerMove",
-            end:    "PointerUp",
-            cancel: "PointerCancel",
-            leave:  "PointerLeave"
-          };
-          // добавление префиксов для IE10
-          const ie10 = (window.navigator.msPointerEnabled && Function('/*@cc_on return document.documentMode===10@*/')());
-          for (const value in events) {
-            if (value === "type") continue;
-            
-            events[value] = (ie10) ? `MS${events[value]}` : events[value].toLowerCase();
-          }
-          break;
         case support.touch:
           events = {
             type:   "touch",
@@ -230,13 +210,6 @@ $(document).ready(function () {
           break;
         default:
           events = {};
-          // events = {
-          //   type:  "mouse",
-          //   start: "mousedown",
-          //   move:  "mousemove",
-          //   end:   "mouseup",
-          //   leave: "mouseleave"
-          // };
           break;
       }
 
@@ -245,11 +218,11 @@ $(document).ready(function () {
 
     
     /**
-    * Объединение событий pointer и touch.
+    * Объединение событий touch.
     * @param {object} event - принимает в качестве аргумента событие.
     * @returns {TouchList | event} возвращает либо TouchList, либо оставляет событие без изменения.
     */
-    const eventsUnify = function (event) {
+    const eventsUnify = event => {
       return event.changedTouches ? event.changedTouches[0] : event;
     };
 
@@ -257,7 +230,7 @@ $(document).ready(function () {
      * Обрабочик начала касания указателем.
      * @param {Event} event - получает событие.
      */
-    const checkStart = function (event) {
+    const checkStart = event => {
       const swipeEvent = eventsUnify(event);
 
       if (support.touch && typeof swipeEvent.touches !== "undefined" && swipeEvent.touches.length !== 1) return; // игнорирование касания несколькими пальцами
@@ -266,10 +239,7 @@ $(document).ready(function () {
       swipeType = "none";
       dist = 0;
       startX = swipeEvent.pageX;
-      startY = swipeEvent.pageY;
       startTime = new Date().getTime();
-      // if (isMouse) isMouseDown = true; // поддержка мыши
-      swipeEvent.preventDefault();
     };
 
     /**
@@ -277,16 +247,9 @@ $(document).ready(function () {
      * @param {Event} event - получает событие.
      */
     const checkMove = function (event) {
-      // if (isMouse && !isMouseDown) return; // выход из функции, если мышь перестала быть активна во время движения
       const swipeEvent = eventsUnify(event);
       distX = swipeEvent.pageX - startX;
-      distY = swipeEvent.pageY - startY;
-      if (Math.abs(distX) > Math.abs(distY)) {
-        dir = (distX < 0) ? "left" : "right";
-      } else {
-        dir = (distY < 0) ? "up" : "down";
-      } 
-      swipeEvent.preventDefault();
+      dir = (distX < 0) ? "right" : "left";
     };
 
     /**
@@ -294,22 +257,20 @@ $(document).ready(function () {
      * @param {Event} event - получает событие.
      */
     const checkEnd = function (event) {
-      // if (isMouse && !isMouseDown) { // выход из функции и сброс проверки нажатия мыши
-      //   mouseDown = false;
-      //   return;
-      // }
       let endTime = new Date().getTime();
       let time = endTime - startTime;
 
-      if (time >= settings.minTime && time <= settings.maxTime) { // проверка времени жеста
-        if (Math.abs(distX) >= settings.minDist && Math.abs(distY) <= settings.maxDist) {
+      // проверка времени жеста
+      if (time >= settings.minTime && time <= settings.maxTime) {
+        if (Math.abs(distX) >= settings.minDist) {
           swipeType = dir; // опредление типа свайпа как "left" или "right"
-        } else if (Math.abs(distY) >= settings.minDist && Math.abs(distX) <= settings.maxDist) {
-          swipeType = dir; // опредление типа свайпа как "top" или "down"
         }
       }
 
-      dist = ["left", "right"].includes(dir) ? Math.abs(distX) : Math.abs(distY); // опредление пройденной указателем дистанции
+       // опредление пройденной указателем дистанции
+      if(["left", "right"].includes(dir)) {
+        dist = Math.abs(distX)
+      }
 
       // генерация кастомного события swipe
       if (swipeType !== "none" && dist >= settings.minDist) {
@@ -325,20 +286,25 @@ $(document).ready(function () {
           });
         element[0].dispatchEvent(swipeEvent);
       }
-
-      event.preventDefault();
     };
 
     // добавление поддерживаемых событий
     const events = getSupportedEvents();
 
-    // проверка наличия мыши
-    // if ((support.pointer && !support.touch) || events.type === "mouse") isMouse = true;
-
     // добавление обработчиков на элемент
     element.on(events.start, checkStart);
     element.on(events.move, checkMove);
     element.on(events.end, checkEnd);
+  }
+
+  const swipeHandler = (event) => {
+    if (~event.target.className.indexOf('page-slider')) return false;
+    if (event.detail.full.target.tagName == 'IMG') return false;
+
+    let currentPageNumber = currentPage.data('number'),
+      direction = event.detail.dir;
+    
+    goToNewPage(direction, currentPageNumber);
   }
 
   const setCurrentPageSwipeHandler = () => {
@@ -351,9 +317,9 @@ $(document).ready(function () {
 
     swipe(currentPage, initialSettings);
 
-    currentPage.on('swipe', (event) => {
-      // console.log(event.detail);
-    })
+    currentPage.on('swipe', event => {
+      swipeHandler(event);
+    });
   }
   
   setCurrentPageSwipeHandler();

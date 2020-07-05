@@ -324,5 +324,11 @@ $(document).ready(function () {
   
   setCurrentPageSwipeHandler();
   setCurrentPageClickHandler();
+
+  $("body").overlayScrollbars({
+    scrollbars: {
+      visibility: 'hidden'
+    }
+   });
 });
 

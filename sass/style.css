@@ -9,6 +9,12 @@ body {
   font-size: 10px;
   background: black url(../img/main/bg.png) no-repeat 0% 0%;
   background-size: cover;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 a {
@@ -129,22 +135,21 @@ a:hover {
   position: fixed;
   top: 20px;
   left: 0px;
-  width: 100%;
+  width: 100vw;
   z-index: 1;
 }
 
 .header-overlay {
   position: absolute;
-  top: -20px;
+  top: -30px;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background: #1A1A1A;
-  opacity: 0.9;
 }
 
 .header-overlay_filter {
-  -webkit-filter: blur(50px);
-          filter: blur(50px);
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
 }
 
 .header-pages {
@@ -169,6 +174,10 @@ a:hover {
 
 .header-pages__page_active {
   background: #ffffff;
+}
+
+.no-padding-right {
+  padding-right: 0;
 }
 
 .page {
@@ -197,8 +206,12 @@ a:hover {
   outline: none;
 }
 
+.page1 {
+  height: 100vh;
+}
+
 .page1-content {
-  margin-top: 40vh;
+  margin-top: 360px;
 }
 
 .page1-content__title {
@@ -572,21 +585,21 @@ a:hover {
   position: fixed;
   bottom: 32px;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 115px;
 }
 
 .footer-overlay {
   position: absolute;
+  bottom: -32px;
   width: 100%;
-  height: 100%;
+  height: 147px;
   background: #1A1A1A;
-  opacity: 0.9;
 }
 
 .footer-overlay_filter {
-  -webkit-filter: blur(50px);
-          filter: blur(50px);
+  -webkit-filter: blur(45px);
+          filter: blur(45px);
 }
 
 .footer-content {
@@ -620,6 +633,9 @@ a:hover {
 }
 
 @media (max-width: 320px) {
+  .page1-content {
+    margin-top: 80%;
+  }
   .page4-contacts__button::before {
     left: 20px;
   }

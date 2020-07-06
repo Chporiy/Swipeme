@@ -174,15 +174,6 @@ a:hover {
   padding-right: 0;
 }
 
-.page {
-  display: none;
-  height: 80%;
-}
-
-.page-active {
-  display: block;
-}
-
 .page-slider {
   margin-top: 50px;
 }
@@ -200,12 +191,8 @@ a:hover {
   outline: none;
 }
 
-.page1 {
-  height: 100vh;
-}
-
 .page1-content {
-  margin-top: 360px;
+  margin-top: 90%;
 }
 
 .page1-content__title {
@@ -221,7 +208,7 @@ a:hover {
 }
 
 .page2-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page2-content__title {
@@ -250,7 +237,7 @@ a:hover {
 }
 
 .page3-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page3-content__title {
@@ -306,7 +293,7 @@ a:hover {
 }
 
 .page4-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page4-content__title {
@@ -378,7 +365,7 @@ a:hover {
 }
 
 .page5-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page5-content__title {
@@ -439,7 +426,7 @@ a:hover {
 }
 
 .page6-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page6-content__title {
@@ -488,7 +475,7 @@ a:hover {
 }
 
 .page7-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page7-content__title {
@@ -537,7 +524,7 @@ a:hover {
 }
 
 .page8-content {
-  margin-top: 85px;
+  margin-top: 20px;
 }
 
 .page8-content__subtitle {
@@ -605,7 +592,7 @@ a:hover {
 
 @media (max-width: 320px) {
   .page1-content {
-    margin-top: 80%;
+    margin-top: 65%;
   }
   .page4-contacts__button::before {
     left: 20px;
@@ -617,13 +604,13 @@ a:hover {
 
 @media (max-width: 320px) and (max-height: 545px) {
   .page1-content {
-    margin-top: 70%;
+    margin-top: 40%;
   }
 }
 
-@media (max-width: 320px) and (max-height: 510px) {
+@media (min-height: 650px) and (max-height: 750px) {
   .page1-content {
-    margin-top: 60%;
+    margin-top: 75%;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,7 +5,8 @@ $(document).ready(function () {
     SLIDER = $('.page-slider');
 
   let documentWidth = $(document).width();
-    halfWidth = documentWidth / 2; 
+    halfWidth = documentWidth / 2,
+    screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
 
   const setPagesWidth = () => {
     $('.page').width(documentWidth);
@@ -375,5 +376,6 @@ $(document).ready(function () {
    
   setPagesWidth();
   setSlickTrackHeight(0);
+  screen.orientation.lock('portrait-primary');
 });
 

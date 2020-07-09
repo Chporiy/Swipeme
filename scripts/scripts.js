@@ -1,15 +1,54 @@
 $(document).ready(function () {
+  let isMobile = {
+      Android:        function() { return navigator.userAgent.match(/Android/i) ? true : false; },
+      BlackBerry:     function() { return navigator.userAgent.match(/BlackBerry/i) ? true : false; },
+      iOS:            function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false; },
+      Windows:        function() { return navigator.userAgent.match(/IEMobile/i) ? true : false; },
+      any:            function() { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());  }
+  };
 
+  let currentPageNumber = 0;
+  
   const FAQ = $('.page7-FAQ'),
     HEADER_PAGES = $('.header-pages'),
-    SLIDER = $('.page-slider');
-
-  let documentWidth = $(document).width(),
-    halfWidth = documentWidth / 2;
-    // screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+    SLIDER = $('.page-slider'),
+    MODAL_CALLBACK = $('.modalCallback'),
+    MODAL_CALLBACK_SHOW_BUTTON = $('.footer-contact__button'),
+    MODAL_CALLBACK_CLOSE_BUTTON = $('.modalCallback-close'), 
+    FORM = $('.modalCallback-form'),
+    FORM_INPUT = $('.modalCallback-form__input'),
+    SLIDER_OPTIONS = {
+      accessibility: false,
+      arrows: false,
+      adaptiveHeight: true,
+      dots: false,
+      focusOnSelect: true,
+      infinite: false,
+      initialSlide: currentPageNumber,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      speed: 300,
+      swipeToSlide: true,
+      touchThreshold: 500,
+      variableWidth: true,
+      waitForAnimate: false,
+      responsive: [
+        {
+          breakpoint: 576,
+          settings: {
+            touchThreshold: 5
+          }
+        }
+      ]
+    }
 
   const setPagesWidth = () => {
-    $('.page').width(documentWidth);
+    if (isMobile.any()) {
+      let documentWidth = $(document).width();
+      $('.page').width(documentWidth);
+    } else {
+      $('.page').width(375);
+    }
   }
 
   const setPagesHeight = () => {
@@ -35,30 +74,32 @@ $(document).ready(function () {
   }
 
   const checkLeftSideClick = (clientX) => {
+    let documentWidth = $(document).width();
+    let halfWidth = documentWidth / 2;
+
     return 0 <= clientX && clientX <= halfWidth;
   }
 
   const checkRightSideClick = (clientX) => {
+    let documentWidth = $(document).width();
+    let halfWidth = documentWidth / 2;
+
     return documentWidth - halfWidth <= clientX && clientX <= documentWidth;
   }
 
-  // const goToNewPage = (direction, currentPageNumber) => {
-  //   let newPageNumber;
-    
-  //   if (direction == 'left') {
-  //     if (currentPageNumber == 1) return false;
+  const isWindowLandscape = () => {
+    const width = $(document).width();
+    const height = $(document).height();
 
-  //     newPageNumber = currentPageNumber - 1;
-  //     changePage(newPageNumber);
-  //     changePageIndicator(newPageNumber);
-  //   } else {
-  //     if (currentPageNumber == 8) return false;
+    return width > height;
+  }
 
-  //     newPageNumber = currentPageNumber + 1;
-  //     changePage(newPageNumber);
-  //     changePageIndicator(newPageNumber);
-  //   }
-  // }
+  const toggleWarningBlock = () => {
+    if (isMobile.any()) {
+      let warningBlock = $('.warning');
+      warningBlock.toggleClass('warning-active');
+    }
+  }
 
   const setPagesClickHandler = () => {
     $('.page').on('click', event => {
@@ -67,8 +108,8 @@ $(document).ready(function () {
   }
 
   const clickPageHandler = (event) => {
-    let clientX = event.clientX,
-      currentPageNumber = SLIDER.slick('slickCurrentSlide');    
+    let clientX = event.clientX;
+    currentPageNumber = getCurrentSlide();    
   
       if (checkLeftSideClick(clientX)) {
         if (currentPageNumber == 7) return false;
@@ -82,23 +123,8 @@ $(document).ready(function () {
         newPageNumber = currentPageNumber + 1;
         SLIDER.slick('slickGoTo', newPageNumber);
       }
-      // goToNewPage(direction, currentPageNumber);
   }
 
-  // const changePage = (newPageNumber) => {
-    // currentPage.toggleClass('page-active');
-    // currentPage.off('click');
-    // currentPage.off('swipe');
-    // currentPage = $(`.page[data-number='${newPageNumber}']`);
-    // currentPage.toggleClass('page-active');
-
-    // setCurrentPageClickHandler();
-    // setCurrentPageSwipeHandler();
-    // changeBodyBackgroungImage(newPageNumber);
-    // changePageIndicator(newPageNumber);
-    // scrollToTop();
-  // }
-  
   const changePageIndicator = (newPageIndicatorNumber) => {
     let currentPageIndicator = $(`.header-pages__page_active`);
     let newPageIndicator = $(`.header-pages__page[data-number='${newPageIndicatorNumber}']`);
@@ -107,67 +133,36 @@ $(document).ready(function () {
     newPageIndicator.toggleClass('header-pages__page_active');
   }
 
-  const changeBodyBackgroungImage = (pageNumber) => {
-    if (pageNumber == 0) {
-      $('body').css('background-image', 'url(./img/main/bg.png)')
-    } else {
-      $('body').css('background-image', 'url(./img/main/bg2.png)')
-    }
-  }
-
-  const setSlickTrackHeight = (currentPageNumber) => {
-    // let height = $(`.page[data-slick-index='${currentPageNumber}']`).height();
-    // $('.slick-track').height(height);
-    // $('.slick-list').height(height);
-  }
-
   const scrollToTop = () => {
     if ($('body')[0].__overlayScrollbars__.scroll().position.y <= 15) {
       $('body')[0].__overlayScrollbars__.scroll(0);
     } else {
-      $('body')[0].__overlayScrollbars__.scroll(0, 100);
+      $('body')[0].__overlayScrollbars__.scroll(0);
     }
   }
 
+  const toggleModalCallback = () => {
+    MODAL_CALLBACK.toggleClass('modalCallback-active');
+  }
+
+  const enableSlider = (options) => {
+    SLIDER.slick(options);
+  }
+
+  const getCurrentSlide = () => {
+    return SLIDER.slick('slickCurrentSlide');
+  }
+
   // Slider
-  SLIDER.slick({
-    dots: false,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    accessibility: false,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 575,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          speed: 300,
-          swipeToSlide: true,
-          waitForAnimate: false,
-          variableWidth: true,
-          focusOnSelect: true,
-          infinite: false,
-          adaptiveHeight: true
-        }
-      }
-    ]
-  });
+  enableSlider(SLIDER_OPTIONS);
 
   SLIDER.on('click', event => {
     event.stopPropagation();
   });
 
   SLIDER.on('afterChange', (event, slick, currentPageNumber) => {
-    console.log(event, slick, currentPageNumber);
     scrollToTop();
     changePageIndicator(currentPageNumber);
-    // changeBodyBackgroungImage(currentPageNumber);
-    setSlickTrackHeight(currentPageNumber);
-  });
-
-  SLIDER.on('setPosition', (event, slick) => {
-    console.log(event, slick);
   });
 
   // Header Navigation
@@ -179,7 +174,6 @@ $(document).ready(function () {
       let newPageNumber = $(target).data('number');
       SLIDER.slick('slickSetOption', 'speed', 1);
       SLIDER.slick('slickGoTo', newPageNumber);
-      // changePage(newPageNumber);
       changePageIndicator(newPageNumber);
       SLIDER.slick('slickSetOption', 'speed', 300);
     }
@@ -198,198 +192,76 @@ $(document).ready(function () {
   // Links
   $('a').on('click', event => {
     event.stopImmediatePropagation();
-    event.preventDefault();
   });
 
-
-  // Swipe
-  /**
-   * @param {object} element - DOM-объект
-   * @param {object} settings - Предварительные настройки для свайпа.
-  */
-  // const swipe = function (element, settings) {
-  //   const isTouch = () => {
-  //     return (
-  //       !!(typeof window.orientation !== "undefined" || 
-  //         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-  //         "ontouchstart" in window || navigator.msMaxTouchPoints || "maxTouchPoint" in window.navigator > 1 || 
-  //         "msMaxTouchPoints" in window.navigator > 1)
-  //     )
-  //   }
-
-  //   // настройки по умолчанию
-  //   settings = Object.assign({}, {
-  //     minDist: 60,  // минимальная дистанция, которую должен пройти указатель, чтобы жест считался как свайп (px)
-  //     maxDist: 120, // максимальная дистанция, не превышая которую может пройти указатель, чтобы жест считался как свайп (px)
-  //     maxTime: 700, // максимальное время, за которое должен быть совершен свайп (ms)
-  //     minTime: 50   // минимальное время, за которое должен быть совершен свайп (ms)
-  //   }, settings);
-
-  //   let dir,                            // направление свайпа (horizontal)
-  //     swipeType,                        // тип свайпа (left, right)
-  //     dist,                             // дистанция, пройденная указателем
-  //     startX = 0,                       // начало координат по оси X (pageX)
-  //     distX = 0,                        // дистанция, пройденная указателем по оси X
-  //     startTime = 0,                    // время начала касания
-  //     support = {                       // поддерживаемые браузером типы событий
-  //       touch: isTouch()
-  //     };
-
-  //   // коррекция времени при ошибочных значениях
-  //   if (settings.maxTime < settings.minTime) settings.maxTime = settings.minTime + 500;
-  //   if (settings.maxTime < 100 || settings.minTime < 50) {
-  //     settings.maxTime = 700;
-  //     settings.minTime = 50;
-  //   }
-
-  //   /**
-  //   * Опредление доступных в браузере событий: pointer, touch.
-  //   * @returns {object} - возвращает объект с названиями событий.
-  //   */
-  //   const getSupportedEvents = () => {
-  //     let events; 
-  //     let support = {
-  //       touch: isTouch()
-  //     };
-      
-  //     switch (true) {
-  //       case support.touch:
-  //         events = {
-  //           type:   "touch",
-  //           start:  "touchstart",
-  //           move:   "touchmove",
-  //           end:    "touchend",
-  //           cancel: "touchcancel"
-  //         };
-  //         break;
-  //       default:
-  //         events = {};
-  //         break;
-  //     }
-
-  //     return events;
-  //   };
-
-    
-  //   /**
-  //   * Объединение событий touch.
-  //   * @param {object} event - принимает в качестве аргумента событие.
-  //   * @returns {TouchList | event} возвращает либо TouchList, либо оставляет событие без изменения.
-  //   */
-  //   const eventsUnify = event => {
-  //     return event.changedTouches ? event.changedTouches[0] : event;
-  //   };
-
-  //   /**
-  //    * Обрабочик начала касания указателем.
-  //    * @param {Event} event - получает событие.
-  //    */
-  //   const checkStart = event => {
-  //     const swipeEvent = eventsUnify(event);
-
-  //     if (support.touch && typeof swipeEvent.touches !== "undefined" && swipeEvent.touches.length !== 1) return; // игнорирование касания несколькими пальцами
-      
-  //     dir = "none";
-  //     swipeType = "none";
-  //     dist = 0;
-  //     startX = swipeEvent.pageX;
-  //     startTime = new Date().getTime();
-  //   };
-
-  //   /**
-  //    * Обработчик движения указателя.
-  //    * @param {Event} event - получает событие.
-  //    */
-  //   const checkMove = function (event) {
-  //     const swipeEvent = eventsUnify(event);
-  //     distX = swipeEvent.pageX - startX;
-  //     dir = (distX < 0) ? "right" : "left";
-  //   };
-
-  //   /**
-  //    * Обработчик окончания касания указателем.
-  //    * @param {Event} event - получает событие.
-  //    */
-  //   const checkEnd = function (event) {
-  //     let endTime = new Date().getTime();
-  //     let time = endTime - startTime;
-
-  //     // проверка времени жеста
-  //     if (time >= settings.minTime && time <= settings.maxTime) {
-  //       if (Math.abs(distX) >= settings.minDist) {
-  //         swipeType = dir; // опредление типа свайпа как "left" или "right"
-  //       }
-  //     }
-
-  //      // опредление пройденной указателем дистанции
-  //     if(["left", "right"].includes(dir)) {
-  //       dist = Math.abs(distX)
-  //     }
-
-  //     // генерация кастомного события swipe
-  //     if (swipeType !== "none" && dist >= settings.minDist) {
-  //       const swipeEvent = new CustomEvent("swipe", {
-  //           bubbles: true,
-  //           cancelable: true,
-  //           detail: {
-  //             full: event, // полное событие Event
-  //             dir:  swipeType, // направление свайпа
-  //             dist: dist, // дистанция свайпа
-  //             time: time // время, потраченное на свайп
-  //           }
-  //         });
-  //       element[0].dispatchEvent(swipeEvent);
-  //     }
-  //   };
-
-  //   // добавление поддерживаемых событий
-  //   const events = getSupportedEvents();
-
-  //   // добавление обработчиков на элемент
-  //   element.on(events.start, checkStart);
-  //   element.on(events.move, checkMove);
-  //   element.on(events.end, checkEnd);
-  // }
-
-  // const swipeHandler = (event) => {
-  //   if (~event.target.className.indexOf('page-slider')) return false;
-  //   if (event.detail.full.target.tagName == 'IMG') return false;
-
-  //   let currentPageNumber = currentPage.data('number'),
-  //     direction = event.detail.dir;
-    
-  //   goToNewPage(direction, currentPageNumber);
-  // }
-
-  // const setCurrentPageSwipeHandler = () => {
-  //   const initialSettings = {
-  //     maxTime: 1000,
-  //     minTime: 100,
-  //     maxDist: 150,
-  //     minDist: 60
-  //   }
-
-  //   swipe(currentPage, initialSettings);
-
-  //   currentPage.on('swipe', event => {
-  //     swipeHandler(event);
-  //   });
-  // }
-  
-  // setCurrentPageSwipeHandler();
-  setPagesClickHandler();
-
+  // Hide Scroll
   $("body").overlayScrollbars({
     clipAlways: false,
     scrollbars: {
       visibility: 'hidden',
       touchSupport: false
     }
-   });
+  });
+
+  // Window Events
+  $(window)
+    .on('orientationchange', () => {
+      toggleWarningBlock();
+    })
+    .on('resize', () => {
+      setPagesHeight();
+      setPagesWidth();
+    })
+    
+    // Form Phone
+  function setSelectionRange(input, selectionStart, selectionEnd) {
+    if (input.setSelectionRange) {
+      input.focus();
+      input.setSelectionRange(selectionStart, selectionEnd);
+    } else if (input.createTextRange) {
+      var range = input.createTextRange();
+      range.collapse(true);
+      range.moveEnd('character', selectionEnd);
+      range.moveStart('character', selectionStart);
+      range.select();
+    }
+  }
+
+  function setCaretToPos(input, pos) {
+    setSelectionRange(input, pos, pos);
+  }
+
+  $(".modalCallback-form__input").click(function() {
+    setCaretToPos($(".modalCallback-form__input")[0], 3);
+  });
+  
+  $(function(){
+    $(".modalCallback-form__input").mask("+7 999 999-99-99", {
+      placeholder: "+7 000 000-00-00"
+    });
+  });
+
+  // Modal Callback
+  MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
+    toggleModalCallback();
+  });
+  MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
+    toggleModalCallback();
+  });
+
+  // FORM
+  FORM.on('submit', event => {
+    event.preventDefault();
+  });
    
+  if (isMobile.any()) {
+    setPagesClickHandler();
+  }
   setPagesHeight();
   setPagesWidth();
-  setSlickTrackHeight(0);
-  screen.orientation.lock('portrait-primary');
+  
+  if (isWindowLandscape()) {
+    toggleWarningBlock();
+  }
 });
 

@@ -7,8 +7,7 @@ body {
   color: #ffffff;
   font-family: 'Roboto Light', sans-serif;
   font-size: 10px;
-  background: black url(../img/main/bg.png) no-repeat 0% 0%;
-  background-size: cover;
+  background-color: black;
 }
 
 a {
@@ -174,21 +173,17 @@ a:hover {
   padding-right: 0;
 }
 
-.page-slider {
-  margin-top: 50px;
-}
-
-.page-slider__block {
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
 .page-slider__block:active {
   outline: none;
 }
 
 .page-slider__block:focus {
   outline: none;
+}
+
+.page1 {
+  background: black url(../img/main/bg.png) no-repeat 0% 0%;
+  background-size: cover;
 }
 
 .page1-content {
@@ -207,8 +202,13 @@ a:hover {
   font-weight: 400;
 }
 
+.page2 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page2-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page2-content__title {
@@ -236,8 +236,13 @@ a:hover {
   font-size: 24px;
 }
 
+.page3 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page3-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page3-content__title {
@@ -292,8 +297,13 @@ a:hover {
   color: #ffffff;
 }
 
+.page4 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page4-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page4-content__title {
@@ -364,8 +374,13 @@ a:hover {
   background: url(../img/social/whatsapp.png) no-repeat center;
 }
 
+.page5 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page5-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page5-content__title {
@@ -425,8 +440,13 @@ a:hover {
   text-align: center;
 }
 
+.page6 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page6-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page6-content__title {
@@ -474,8 +494,13 @@ a:hover {
   text-align: center;
 }
 
+.page7 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page7-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page7-content__title {
@@ -523,8 +548,13 @@ a:hover {
   width: 10px;
 }
 
+.page8 {
+  background: black url(../img/main/bg2.png) no-repeat 0% 0%;
+  background-size: cover;
+}
+
 .page8-content {
-  margin-top: 20px;
+  margin-top: 75px;
 }
 
 .page8-content__subtitle {
@@ -592,7 +622,7 @@ a:hover {
 
 @media (max-width: 320px) {
   .page1-content {
-    margin-top: 65%;
+    margin-top: 80%;
   }
   .page4-contacts__button::before {
     left: 20px;
@@ -604,7 +634,7 @@ a:hover {
 
 @media (max-width: 320px) and (max-height: 545px) {
   .page1-content {
-    margin-top: 40%;
+    margin-top: 50%;
   }
 }
 

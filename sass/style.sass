@@ -11,8 +11,7 @@ body
 	color: $text_color_light
 	font-family: 'Roboto Light', sans-serif
 	font-size: 10px
-	background: black url(../img/main/bg.png) no-repeat 0% 0%
-	background-size: cover
+	background-color: black
 
 a
 	text-decoration: none
@@ -112,16 +111,19 @@ a:hover
 
 .page
 	&-slider
-		margin-top: 50px
+		// margin-top: 50px
 		&__block
-			border-radius: 50%
-			margin-right: 20px
+			// border-radius: 50%
+			// margin-right: 20px
 			&:active
 				outline: none
 			&:focus
 				outline: none
 				
 .page1
+	background: black url(../img/main/bg.png) no-repeat 0% 0%
+	background-size: cover
+	// height: 100vh
 	&-content
 		margin-top: 90%
 		&__title
@@ -134,8 +136,10 @@ a:hover
 			font-weight: 400
 
 .page2
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -153,8 +157,10 @@ a:hover
 			font-size: 24px
 
 .page3
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -194,8 +200,10 @@ a:hover
 			color: $text_color_light
 				
 .page4
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -244,8 +252,10 @@ a:hover
 				background: url(../img/social/whatsapp.png) no-repeat center
 
 .page5
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -287,8 +297,10 @@ a:hover
 			text-align: center
 
 .page6
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -323,8 +335,10 @@ a:hover
 			text-align: center
 
 .page7
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__title
 			font-family: 'Roboto Bold', sans-serif
 			font-size: 2.4em
@@ -357,8 +371,10 @@ a:hover
 			width: 10px
 
 .page8
+	background: black url(../img/main/bg2.png) no-repeat 0% 0%
+	background-size: cover
 	&-content
-		margin-top: 20px
+		margin-top: 75px
 		&__subtitle
 			width: 90%
 			margin-top: 20px
@@ -402,8 +418,10 @@ a:hover
 	width: 100%
 
 @media (max-width: 320px)
+	body
+		// font-size: 9px
 	.page1-content
-		margin-top: 65%
+		margin-top: 80%
 	.page4-contacts__button::before
 		left: 20px
 	.page4-contacts span
@@ -411,7 +429,7 @@ a:hover
 
 @media (max-width: 320px) and (max-height: 545px)
 	.page1-content
-		margin-top: 40%
+		margin-top: 50%
 
 @media (min-height: 650px) and (max-height: 750px)
 	.page1-content

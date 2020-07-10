@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/slick.css">
 	<link rel="stylesheet" href="css/OverlayScrollbars.min.css">
+	<link rel="stylesheet" href="css/plyr.css">
 	<!-- <link rel="shortcut icon" type="image/png" href="img/fav.png"/> -->
 	<link rel="stylesheet" href="sass/style.css">
 
@@ -40,7 +41,6 @@
 			</div>
 		</div>
 	</header>
-
 
 	<div class="page-slider">
 		<section class="page page1" data-number="1">
@@ -276,8 +276,8 @@
 									Сколько можно заработать со Swipeme?
 								</p>
 								<p class="page7-FAQ__answer">
-									На тарифе START можно создать 1 сайт. <br>
-									На тарифе MAX вы можете создать до 5 сайтов.
+									Ограничений по доходу нет. В зависимости от того как активно вы
+									работаете и строите команду будет рости ваш доход.
 								</p>
 							</div>
 							<div class="page7-FAQ__block">
@@ -286,8 +286,10 @@
 									Почему Swipeme выгоднее аналогов?
 								</p>
 								<p class="page7-FAQ__answer">
-									На тарифе START можно создать 1 сайт. <br>
-									На тарифе MAX вы можете создать до 5 сайтов.
+									Причин несколько: <br>
+									- партнерская программа <br>
+									- современный дизайн <br>
+									- элементы повышающие конверсию в заявку <br>
 								</p>
 							</div>
 						</div>
@@ -368,6 +370,25 @@
 		</div>
 	</div>
 
+	<div class="modalVideo">
+		<div class="modalVideo-close">&times;</div>
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				<div class="col-12">
+					<div class="modalVideo-content">
+						<div class="modalVideo-content__video">
+							<video id="player" playsinline controls data-poster="./img/modal/video-poster.png">
+								<source src="./video/modal-video.mp4" type="video/mp4" />
+							</video>
+						</div>
+						<a href="#" class="modalVideo-content__button button">Хочу себе Swipeme</a>
+						<p class="modalVideo-content__text">Сделано c ❤️ на <span>Swipeme</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="warning">
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
@@ -384,6 +405,7 @@
  <script src="scripts/jquery.maskedinput.min.js"></script>
  <script src="scripts/slick.min.js"></script>
  <script src="scripts/jquery.overlayScrollbars.min.js"></script>
+ <script src="scripts//plyr.polyfilled.min.js"></script>
  <script src="scripts/scripts.js"></script>
 </body>
 </html>

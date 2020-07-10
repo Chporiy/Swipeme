@@ -17,6 +17,18 @@ $(document).ready(function () {
     MODAL_CALLBACK_CLOSE_BUTTON = $('.modalCallback-close'), 
     FORM = $('.modalCallback-form'),
     FORM_INPUT = $('.modalCallback-form__input'),
+    MODAL_VIDEO = $('.modalVideo'),
+    MODAL_VIDEO_SHOW_BUTTON = $('.footer-video'),
+    MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'), 
+    PLAYER = new Plyr('#player', {
+      controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+      // autoplay: true,
+      setting: ['captions', 'quality', 'speed', 'loop'],
+      quality: { 
+        default: 576, 
+        options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] 
+      }
+    });
     SLIDER_OPTIONS = {
       accessibility: false,
       arrows: false,
@@ -63,6 +75,40 @@ $(document).ready(function () {
     });
   }
   
+  const setModalCallbackHeight = () => {
+    const documentHeight = $(document).height();
+    const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
+    const emptySpace = pageHeight - documentHeight;
+    if (emptySpace > 0) {
+      const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
+      MODAL_CALLBACK.height(newModalHeight);
+    } else {
+      resetModalCallbackHeight();
+    }
+  }
+
+  const resetModalCallbackHeight = () => {
+    const documentHeight = $(document).height();
+    MODAL_CALLBACK.height(documentHeight);
+  }
+  
+  const setModalVideoHeight = () => {
+    const documentHeight = $(document).height();
+    const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
+    const emptySpace = pageHeight - documentHeight;
+    if (emptySpace >= 0) {
+      const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
+      MODAL_VIDEO.height(newModalHeight);
+    } else {
+      resetModalVideoHeight();
+    }
+  }
+
+  const resetModalVideoHeight = () => {
+    const documentHeight = $(document).height();
+    MODAL_CALLBACK.height(documentHeight);
+  }
+
   const showAnswer = (element) => {
     element.classList.add('page7-FAQ__block_active');
     element.querySelector('.page7-FAQ__toggle').textContent = "-";
@@ -112,7 +158,7 @@ $(document).ready(function () {
     currentPageNumber = getCurrentSlide();    
   
       if (checkLeftSideClick(clientX)) {
-        if (currentPageNumber == 7) return false;
+        if (currentPageNumber == 1) return false;
 
         newPageNumber = currentPageNumber - 1;
         SLIDER.slick('slickGoTo', newPageNumber);
@@ -134,15 +180,15 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    if ($('body')[0].__overlayScrollbars__.scroll().position.y <= 15) {
-      $('body')[0].__overlayScrollbars__.scroll(0);
-    } else {
-      $('body')[0].__overlayScrollbars__.scroll(0);
-    }
+    $('body')[0].__overlayScrollbars__.scroll(0);
   }
 
   const toggleModalCallback = () => {
     MODAL_CALLBACK.toggleClass('modalCallback-active');
+  }
+
+  const toggleModalVideo = () => {
+    MODAL_VIDEO.toggleClass('modalVideo-active');
   }
 
   const enableSlider = (options) => {
@@ -195,7 +241,7 @@ $(document).ready(function () {
   });
 
   // Hide Scroll
-  $("body").overlayScrollbars({
+  let instance = OverlayScrollbars($("body"), {
     clipAlways: false,
     scrollbars: {
       visibility: 'hidden',
@@ -242,18 +288,38 @@ $(document).ready(function () {
   });
 
   // Modal Callback
-  MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
-    toggleModalCallback();
-  });
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
+    setModalCallbackHeight();
+    scrollToTop();
   });
 
+  MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
+    toggleModalCallback();
+    resetModalCallbackHeight();
+    scrollToTop();
+  });
+  
   // FORM
   FORM.on('submit', event => {
     event.preventDefault();
   });
-   
+  
+  // Modal Video
+  MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
+    toggleModalVideo();
+    setModalVideoHeight();
+    scrollToTop();
+  });
+  
+  MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
+    PLAYER.pause();
+    toggleModalVideo();
+    resetModalVideoHeight();
+    scrollToTop();
+  });
+  
+
   if (isMobile.any()) {
     setPagesClickHandler();
   }

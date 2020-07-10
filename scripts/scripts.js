@@ -10,6 +10,7 @@ $(document).ready(function () {
   let currentPageNumber = 0;
   
   const FAQ = $('.page7-FAQ'),
+    FAQ_BLOCK = $('.page7-FAQ__block'),
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider'),
     MODAL_CALLBACK = $('.modalCallback'),
@@ -110,13 +111,13 @@ $(document).ready(function () {
   }
 
   const showAnswer = (element) => {
-    element.classList.add('page7-FAQ__block_active');
-    element.querySelector('.page7-FAQ__toggle').textContent = "-";
+    element.addClass('page7-FAQ__block_active');
+    element.find('.page7-FAQ__toggle').text("-");
   }
   
   const hideAnswer = (element) => {
-    element.classList.remove('page7-FAQ__block_active');
-    element.querySelector('.page7-FAQ__toggle').textContent = "+";
+    element.removeClass('page7-FAQ__block_active');
+    element.find('.page7-FAQ__toggle').text("+");
   }
 
   const checkLeftSideClick = (clientX) => {
@@ -158,7 +159,7 @@ $(document).ready(function () {
     currentPageNumber = getCurrentSlide();    
   
       if (checkLeftSideClick(clientX)) {
-        if (currentPageNumber == 1) return false;
+        if (currentPageNumber == 0) return false;
 
         newPageNumber = currentPageNumber - 1;
         SLIDER.slick('slickGoTo', newPageNumber);
@@ -226,12 +227,12 @@ $(document).ready(function () {
   });
 
   // FAQ
-  FAQ.on('click', event => {
-    let target = event.target;
-    if ('page7-FAQ__question' == target.className || ~target.className.indexOf('page7-FAQ__block')) {
-      let targetParent = ~target.className.indexOf('page7-FAQ__block') ? target : target.parentElement;
-      ~targetParent.className.indexOf('page7-FAQ__block_active') ? hideAnswer(targetParent) : showAnswer(targetParent);
-    }
+  FAQ_BLOCK.on('click', function (event) {
+    // let target = event.target;
+    // if ('page7-FAQ__question' == target.className || ~target.className.indexOf('page7-FAQ__block')) {
+      // let targetParent = $(this).className.indexOf('page7-FAQ__block') ? target : target.parentElement;
+      $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
+    // }
     return false;
   });
 

@@ -411,7 +411,6 @@ a:hover
 	width: 100%
 
 .modalCallback
-	padding-bottom: 25px
 	position: absolute
 	top: 0px
 	left: 0px
@@ -426,6 +425,7 @@ a:hover
 		top: 15px
 		right: 25px
 		font-size: 3em
+		font-weight: 900
 		z-index: 101
 	&-top
 		margin-top: 75px
@@ -505,6 +505,7 @@ a:hover
 				font-family: 'Roboto Bold', sans-serif
 
 .modalVideo
+	height: 100vh !important
 	position: absolute
 	top: 0px
 	left: 0px
@@ -519,7 +520,8 @@ a:hover
 		display: block
 		top: 50px
 		right: 45px
-		font-size: 3em
+		font-size: 3.5em
+		font-weight: 900
 		z-index: 101
 	&-content
 		position: relative
@@ -579,20 +581,28 @@ a:hover
 @media (max-height: 545px)
 	.page1-content
 		margin-top: 50%
+	.modalCallback
+		padding-bottom: 25px
 	.modalVideo
 		padding-bottom: 25px
 	.modalVideo-close
-		top: 15px
+		top: 35px
 	.modalVideo-content__video
-		margin-top: 5px
+		margin-top: 30px
+	.plyr
+		max-height: 400px
 
 @media (min-height: 546px) and (max-height: 649px)
 	.page1-content
 		margin-top: 70%
+	.modalCallback
+		padding-bottom: 25px
 
 @media (min-height: 650px) and (max-height: 750px)
 	.page1-content
 		margin-top: 100%
+	.modalCallback
+		padding-bottom: 25px
 
 @media (min-width: 768px)
 	.os-content, .os-viewport, .os-padding

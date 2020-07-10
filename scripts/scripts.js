@@ -9,8 +9,7 @@ $(document).ready(function () {
 
   let currentPageNumber = 0;
   
-  const FAQ = $('.page7-FAQ'),
-    FAQ_BLOCK = $('.page7-FAQ__block'),
+  const FAQ_BLOCK = $('.page7-FAQ__block'),
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider'),
     MODAL_CALLBACK = $('.modalCallback'),
@@ -20,7 +19,7 @@ $(document).ready(function () {
     FORM_INPUT = $('.modalCallback-form__input'),
     MODAL_VIDEO = $('.modalVideo'),
     MODAL_VIDEO_SHOW_BUTTON = $('.footer-video'),
-    MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'), 
+    MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'),
     PLAYER = new Plyr('#player', {
       controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
       // autoplay: true,
@@ -93,23 +92,6 @@ $(document).ready(function () {
     MODAL_CALLBACK.height(documentHeight);
   }
   
-  const setModalVideoHeight = () => {
-    const documentHeight = $(document).height();
-    const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
-    const emptySpace = pageHeight - documentHeight;
-    if (emptySpace >= 0) {
-      const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
-      MODAL_VIDEO.height(newModalHeight);
-    } else {
-      resetModalVideoHeight();
-    }
-  }
-
-  const resetModalVideoHeight = () => {
-    const documentHeight = $(document).height();
-    MODAL_CALLBACK.height(documentHeight);
-  }
-
   const showAnswer = (element) => {
     element.addClass('page7-FAQ__block_active');
     element.find('.page7-FAQ__toggle').text("-");
@@ -200,6 +182,11 @@ $(document).ready(function () {
     return SLIDER.slick('slickCurrentSlide');
   }
 
+  const toggleOverflowOsContent = () => {
+    const OS_CONTENT = $('.os-content');
+    OS_CONTENT.css('overflow', OS_CONTENT.css('overflow') === 'visible' ? 'hidden' : 'visible');
+  }
+
   // Slider
   enableSlider(SLIDER_OPTIONS);
 
@@ -228,11 +215,7 @@ $(document).ready(function () {
 
   // FAQ
   FAQ_BLOCK.on('click', function (event) {
-    // let target = event.target;
-    // if ('page7-FAQ__question' == target.className || ~target.className.indexOf('page7-FAQ__block')) {
-      // let targetParent = $(this).className.indexOf('page7-FAQ__block') ? target : target.parentElement;
-      $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
-    // }
+    $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
     return false;
   });
 
@@ -309,15 +292,15 @@ $(document).ready(function () {
   // Modal Video
   MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
     toggleModalVideo();
-    setModalVideoHeight();
     scrollToTop();
+    toggleOverflowOsContent();
   });
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
     PLAYER.pause();
     toggleModalVideo();
-    resetModalVideoHeight();
     scrollToTop();
+    toggleOverflowOsContent();
   });
   
 

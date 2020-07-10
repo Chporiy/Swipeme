@@ -613,7 +613,6 @@ a:hover {
 }
 
 .modalCallback {
-  padding-bottom: 25px;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -632,6 +631,7 @@ a:hover {
   top: 15px;
   right: 25px;
   font-size: 3em;
+  font-weight: 900;
   z-index: 101;
 }
 
@@ -763,6 +763,7 @@ a:hover {
 }
 
 .modalVideo {
+  height: 100vh !important;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -781,7 +782,8 @@ a:hover {
   display: block;
   top: 50px;
   right: 45px;
-  font-size: 3em;
+  font-size: 3.5em;
+  font-weight: 900;
   z-index: 101;
 }
 
@@ -878,14 +880,20 @@ a:hover {
   .page1-content {
     margin-top: 50%;
   }
+  .modalCallback {
+    padding-bottom: 25px;
+  }
   .modalVideo {
     padding-bottom: 25px;
   }
   .modalVideo-close {
-    top: 15px;
+    top: 35px;
   }
   .modalVideo-content__video {
-    margin-top: 5px;
+    margin-top: 30px;
+  }
+  .plyr {
+    max-height: 400px;
   }
 }
 
@@ -893,11 +901,17 @@ a:hover {
   .page1-content {
     margin-top: 70%;
   }
+  .modalCallback {
+    padding-bottom: 25px;
+  }
 }
 
 @media (min-height: 650px) and (max-height: 750px) {
   .page1-content {
     margin-top: 100%;
+  }
+  .modalCallback {
+    padding-bottom: 25px;
   }
 }
 

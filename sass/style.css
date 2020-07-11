@@ -43,6 +43,7 @@ a:hover {
 
 .button:active {
   background-color: #FDCD70;
+  outline: none;
 }
 
 .button_whatsapp {
@@ -223,6 +224,18 @@ a:hover {
   line-height: 23px;
 }
 
+.page2-preview {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .page2-warning {
   margin-top: 35px;
 }
@@ -256,6 +269,18 @@ a:hover {
 
 .page3-content__subtitle2 {
   margin-top: 20px;
+}
+
+.page3-preview {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .page3-bottomContent {
@@ -390,7 +415,7 @@ a:hover {
 }
 
 .page5-bottomContent__phones {
-  margin-top: 30px;
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -835,8 +860,8 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;

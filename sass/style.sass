@@ -7,7 +7,7 @@ $telegram_button: #33ABE0
 *
 	box-sizing: border-box
 
-body 
+body
 	color: $text_color_light
 	font-family: 'Roboto Light', sans-serif
 	font-size: 10px
@@ -35,6 +35,7 @@ a:hover
 		outline: none
 	&:active
 		background-color: $active_color
+		outline: none
 	&_whatsapp
 		padding: 5px 10px
 		height: 70px
@@ -113,7 +114,7 @@ a:hover
 				outline: none
 			&:focus
 				outline: none
-				
+
 .page1
 	background: black url(../img/main/bg.png) no-repeat center center
 	background-size: cover
@@ -143,6 +144,11 @@ a:hover
 		&__listElement
 			font-size: 1.8em
 			line-height: 23px
+	&-preview
+		margin-top: 40px
+		display: flex
+		align-items: center
+		justify-content: space-around
 	&-warning
 		margin-top: 35px
 		&__text
@@ -165,10 +171,14 @@ a:hover
 			line-height: 23px
 		&__subtitle2
 			margin-top: 20px
+	&-preview
+		margin-top: 40px
+		display: flex
+		align-items: center
+		justify-content: space-around
 	&-bottomContent
 		margin-top: 35px
 		&__text
-			// width: 92%
 			font-size: 1.8em
 			line-height: 23px
 	&-contacts
@@ -202,7 +212,6 @@ a:hover
 			font-size: 2.4em
 			line-height: 28px
 		&__subtitle
-			// width: 90%
 			margin-top: 10px
 			font-size: 1.8em
 			line-height: 23px
@@ -254,13 +263,12 @@ a:hover
 			font-size: 2.4em
 			line-height: 28px
 		&__subtitle
-			// width: 90%
 			margin-top: 10px
 			font-size: 1.8em
 			line-height: 23px
 	&-bottomContent
 		&__phones
-			margin-top: 30px
+			margin-top: 40px
 			display: flex
 			align-items: center
 		&__phone
@@ -369,7 +377,6 @@ a:hover
 	&-content
 		margin-top: 60px
 		&__subtitle
-			// width: 90%
 			margin-top: 20px
 			font-size: 1.8em
 			line-height: 23px
@@ -552,8 +559,8 @@ a:hover
 	position: absolute
 	top: 0
 	left: 0
-	height: 100vh
-	width: 100vw
+	height: 100%
+	width: 100%
 	display: none
 	align-items: center
 	justify-content: center

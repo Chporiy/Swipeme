@@ -22,7 +22,6 @@ $(document).ready(function () {
     MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'),
     PLAYER = new Plyr('#player', {
       controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-      // autoplay: true,
       setting: ['captions', 'quality', 'speed', 'loop'],
       quality: { 
         default: 576, 
@@ -61,6 +60,7 @@ $(document).ready(function () {
     } else {
       $('.page').width(375);
     }
+
   }
 
   const setPagesHeight = () => {
@@ -163,7 +163,7 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    $('body')[0].__overlayScrollbars__.scroll(0);
+    // $('body')[0].__overlayScrollbars__.scroll(0);
   }
 
   const toggleModalCallback = () => {
@@ -225,22 +225,25 @@ $(document).ready(function () {
   });
 
   // Hide Scroll
-  let instance = OverlayScrollbars($("body"), {
-    clipAlways: false,
-    scrollbars: {
-      visibility: 'hidden',
-      touchSupport: false
-    }
-  });
+  // OverlayScrollbars($("body"), {
+  //   clipAlways: false,
+  //   scrollbars: {
+  //     visibility: 'hidden',
+  //     touchSupport: false
+  //   }
+  // });
 
   // Window Events
   $(window)
     .on('orientationchange', () => {
       toggleWarningBlock();
+      toggleOverflowOsContent();
     })
     .on('resize', () => {
-      setPagesHeight();
-      setPagesWidth();
+      if (!isWindowLandscape()) {
+        setPagesWidth();
+        setPagesHeight();
+      }
     })
     
     // Form Phone
@@ -312,6 +315,16 @@ $(document).ready(function () {
   
   if (isWindowLandscape()) {
     toggleWarningBlock();
+    toggleOverflowOsContent();
   }
+
+  // function parallax(selector){
+  //   const scrolled = $(window).scrollTop();
+  //   $(selector).css('background-position',"0 "+  (scrolled * 1) + 'px');
+  // }
+
+  // $(window).on('scroll', () => {
+  //   parallax('.page-slider .page');
+  // })
 });
 

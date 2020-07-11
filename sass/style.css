@@ -431,10 +431,6 @@ a:hover {
       justify-content: space-around;
 }
 
-.page5-bottomContent__phone {
-  margin-right: 20px;
-}
-
 .page5-bottomContent__text {
   margin-top: 25px;
   font-size: 1.8em;
@@ -624,10 +620,13 @@ a:hover {
 .footer-video {
   width: 75px;
   height: 115px;
-  background: black url(../img/footer/video-bg.png) no-repeat center;
-  background-size: cover;
   border: 1px solid #ffffff;
   border-radius: 10px;
+}
+
+.footer-video + .plyr {
+  width: 75px;
+  height: 115px;
 }
 
 .footer-contact__text {
@@ -647,10 +646,12 @@ a:hover {
 .modalCallback {
   position: absolute;
   top: 0px;
-  left: 0px;
+  width: 100%;
   display: none;
   background: #1F1F1F;
   z-index: 2;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
 .modalCallback-active {
@@ -812,8 +813,8 @@ a:hover {
 .modalVideo-close {
   position: absolute;
   display: block;
-  top: 50px;
-  right: 45px;
+  top: 5px;
+  right: 15px;
   font-size: 3.5em;
   font-weight: 900;
   z-index: 101;
@@ -821,6 +822,7 @@ a:hover {
 
 .modalVideo-content {
   position: relative;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -837,16 +839,30 @@ a:hover {
 }
 
 .modalVideo-content__video {
-  margin-top: 45px;
+  position: relative;
 }
 
 .modalVideo-content__button {
   position: absolute;
-  bottom: 57px;
+  bottom: 50px;
+  left: 50%;
   padding: 22px 25px;
+  width: 185px;
   font-family: 'Roboto Bold', serif;
   font-size: 1.4em;
   line-height: 16px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.modalVideo-content__button:focus {
+  outline: none;
+}
+
+.modalVideo-content__button:active {
+  outline: none;
 }
 
 .modalVideo-content__text {
@@ -854,8 +870,7 @@ a:hover {
   margin-right: 5px;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  text-align: right;
-  font-size: 1em;
+  font-size: 10px;
   line-height: 12px;
 }
 
@@ -868,11 +883,17 @@ a:hover {
   bottom: 0px;
   left: 0px;
   width: 100%;
+  display: none;
   padding: 0px 10px 0px 11px;
   height: 50vh;
   background-color: #1f1f1f;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  z-index: 2;
+}
+
+.modalSwipeme-active {
+  display: block;
 }
 
 .modalSwipeme::before {
@@ -885,22 +906,6 @@ a:hover {
   height: 200%;
   background-color: #181818;
   opacity: 0.6;
-}
-
-.modalSwipeme-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  display: none;
-  background: #181818 url(../img/main/bg.png) no-repeat center center;
-  background-size: cover;
-  z-index: 2;
-}
-
-.modalSwipeme-wrapper-active {
-  display: block;
 }
 
 .modalSwipeme-close {
@@ -953,9 +958,11 @@ a:hover {
   width: 100%;
   padding: 0px 10px 0px 11px;
   height: 50vh;
+  display: none;
   background-color: #1f1f1f;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  z-index: 2;
 }
 
 .modalSite-active {
@@ -972,22 +979,6 @@ a:hover {
   height: 200%;
   background: #181818;
   opacity: 0.6;
-}
-
-.modalSite-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  display: none;
-  background: #181818 url(../img/main/bg.png) no-repeat center center;
-  background-size: cover;
-  z-index: 2;
-}
-
-.modalSite-wrapper-active {
-  display: block;
 }
 
 .modalSite-close {
@@ -1065,10 +1056,14 @@ a:hover {
 
 @media (max-width: 320px) {
   body {
-    font-size: 9px;
+    font-size: 8px;
   }
   .page1-content {
     margin-top: 80%;
+  }
+  .page2-preview, .page3-preview, .page5-bottomContent__phones {
+    margin-left: -5%;
+    width: 110%;
   }
   .page4-contacts__button::before {
     left: 20px;

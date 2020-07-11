@@ -352,7 +352,11 @@
 			<div class="row align-items-end justify-content-between">
 				<div class="col-12">
 					<div class="footer-content">
-						<div class="footer-video"></div>
+						<div class="footer-video">
+							<video class="player-mini" muted>
+								<source src="./video/modal-video.mp4" type="video/mp4" />
+							</video>
+						</div>
 						<div class="footer-contact">
 							<button class="footer-contact__button button" type="button">
 								📱 Связаться
@@ -403,17 +407,17 @@
 	</div>
 
 	<div class="modalVideo">
-		<div class="modalVideo-close">&times;</div>
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-12">
 					<div class="modalVideo-content">
 						<div class="modalVideo-content__video">
-							<video id="player" playsinline controls data-poster="./img/modal/video-poster.png">
+							<div class="modalVideo-close">&times;</div>
+							<video class="player-big" playsinline controls>
 								<source src="./video/modal-video.mp4" type="video/mp4" />
 							</video>
+							<a href="#" class="modalVideo-content__button button">Хочу себе Swipeme</a>
 						</div>
-						<a href="#" class="modalVideo-content__button button">Хочу себе Swipeme</a>
 						<p class="modalVideo-content__text">Сделано c ❤️ на <span>Swipeme</span></p>
 					</div>
 				</div>
@@ -421,44 +425,40 @@
 		</div>
 	</div>
 
-	<div class="modalSite-wrapper">
-		<div class="modalSite">
-			<div class="modalSite-close">&times;</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="modalSite-content">
-							<p class="modalSite-text">Эта ссылка будет ввести на ваш сайт</p>
-							<p class="modalSite-text">
-								С ❤️, <span>Swipeme</span>
-							</p>
-						</div>
+	<div class="modalSite">
+		<div class="modalSite-close">&times;</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="modalSite-content">
+						<p class="modalSite-text">Эта ссылка будет ввести на ваш сайт</p>
+						<p class="modalSite-text">
+							С ❤️, <span>Swipeme</span>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="modalSwipeme-wrapper">
-		<div class="modalSwipeme">
-			<div class="modalSwipeme-close">&times;</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="modalSwipeme-content">
-							<p class="modalSwipeme-text">
-								Когда вы будете использовать Swipeme, а кто-то из ваших друзей,
-								знакомых или незнакомых вам людей будет нажимать на эту надпись.
-								У них откроется наш лендинг. Но уже с вашей реферальной ссылкой.
-							</p>
-							<p class="modalSwipeme-text">
-								И при покупке Swipeme, вам автоматически будут начислены деньги.
-								При чем вы можете даже и не знать людей которые купили.
-								А вознаграждение придёт на ваш счёт. Вот так легко и просто.</p>
-							<p class="modalSwipeme-text">
-								С ❤️, <span>Swipeme</span>
-							</p>
-						</div>
+	<div class="modalSwipeme">
+		<div class="modalSwipeme-close">&times;</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="modalSwipeme-content">
+						<p class="modalSwipeme-text">
+							Когда вы будете использовать Swipeme, а кто-то из ваших друзей,
+							знакомых или незнакомых вам людей будет нажимать на эту надпись.
+							У них откроется наш лендинг. Но уже с вашей реферальной ссылкой.
+						</p>
+						<p class="modalSwipeme-text">
+							И при покупке Swipeme, вам автоматически будут начислены деньги.
+							При чем вы можете даже и не знать людей которые купили.
+							А вознаграждение придёт на ваш счёт. Вот так легко и просто.</p>
+						<p class="modalSwipeme-text">
+							С ❤️, <span>Swipeme</span>
+						</p>
 					</div>
 				</div>
 			</div>

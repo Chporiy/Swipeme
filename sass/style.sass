@@ -276,8 +276,6 @@ a:hover
 			display: flex
 			align-items: center
 			justify-content: space-around
-		&__phone
-			margin-right: 20px
 		&__text
 			margin-top: 25px
 			font-size: 1.8em
@@ -407,10 +405,11 @@ a:hover
 	&-video
 		width: 75px
 		height: 115px
-		background: black url(../img/footer/video-bg.png) no-repeat center
-		background-size: cover
 		border: 1px solid $text_color_light
 		border-radius: 10px
+		&+.plyr
+			width: 75px
+			height: 115px
 	&-contact
 		&__text
 			margin-top: 10px
@@ -425,10 +424,12 @@ a:hover
 .modalCallback
 	position: absolute
 	top: 0px
-	left: 0px
+	width: 100%
 	display: none
 	background: #1F1F1F
 	z-index: 2
+	overflow-y: scroll
+	height: 100vh
 	&-active
 		display: block
 	&-close
@@ -530,32 +531,41 @@ a:hover
 	&-close
 		position: absolute
 		display: block
-		top: 50px
-		right: 45px
+		top: 5px
+		right: 15px
 		font-size: 3.5em
 		font-weight: 900
 		z-index: 101
 	&-content
 		position: relative
+		height: 100vh
 		display: flex
 		align-items: center
 		justify-content: center
 		flex-direction: column
 		&__video
-			margin-top: 45px
+			position: relative
 		&__button
 			position: absolute
-			bottom: 57px
+			bottom: 50px
+			left: 50%
 			padding: 22px 25px
+			width: 185px
 			font-family: 'Roboto Bold', serif
 			font-size: 1.4em
 			line-height: 16px
+			transform: translateX(-50%)
+			text-align: center
+			z-index: 1
+			&:focus
+				outline: none
+			&:active
+				outline: none
 		&__text
 			margin-top: 10px
 			margin-right: 5px
 			align-self: flex-end
-			text-align: right
-			font-size: 1em
+			font-size: 10px
 			line-height: 12px
 			span
 				font-family: 'Roboto Bold', serif
@@ -565,11 +575,15 @@ a:hover
 	bottom: 0px
 	left: 0px
 	width: 100%
+	display: none
 	padding: 0px 10px 0px 11px
 	height: 50vh
 	background-color: #1f1f1f
 	border-top-left-radius: 10px
 	border-top-right-radius: 10px
+	z-index: 2
+	&-active
+		display: block
 	&::before
 		content: ''
 		display: block
@@ -580,18 +594,6 @@ a:hover
 		height: 200%
 		background-color: #181818
 		opacity: 0.6
-	&-wrapper
-		position: fixed
-		top: 0
-		left: 0
-		height: 100vh
-		width: 100%
-		display: none
-		background: #181818 url(../img/main/bg.png) no-repeat center center
-		background-size: cover
-		z-index: 2
-		&-active
-			display: block
 	&-close
 		position: absolute
 		display: block
@@ -624,9 +626,11 @@ a:hover
 	width: 100%
 	padding: 0px 10px 0px 11px
 	height: 50vh
+	display: none
 	background-color: #1f1f1f
 	border-top-left-radius: 10px
 	border-top-right-radius: 10px
+	z-index: 2
 	&-active
 		display: block
 	&::before
@@ -639,18 +643,6 @@ a:hover
 		height: 200%
 		background: #181818
 		opacity: 0.6
-	&-wrapper
-		position: fixed
-		top: 0
-		left: 0
-		height: 100vh
-		width: 100%
-		display: none
-		background: #181818 url(../img/main/bg.png) no-repeat center center
-		background-size: cover
-		z-index: 2
-		&-active
-			display: block
 	&-close
 		position: absolute
 		display: block
@@ -695,12 +687,16 @@ a:hover
 			font-size: 3.6em
 			line-height: 42px
 			text-align: center
+		
 
 @media (max-width: 320px)
 	body
-		font-size: 9px
+		font-size: 8px
 	.page1-content
 		margin-top: 80%
+	.page2-preview, .page3-preview, .page5-bottomContent__phones
+		margin-left: -5%
+		width: 110%
 	.page4-contacts__button::before
 		left: 20px
 	.page4-contacts span

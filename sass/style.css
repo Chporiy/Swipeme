@@ -75,7 +75,8 @@ a:hover {
 }
 
 .button_site {
-  padding: 25px 0px;
+  height: 70px;
+  width: 100%;
   display: block;
   background-color: #ffffff;
   font-family: 'Roboto Bold', sans-serif;
@@ -342,6 +343,10 @@ a:hover {
   margin-top: 30px;
 }
 
+.page4-yoursite__button {
+  display: block;
+}
+
 .page4-bottomContent__text {
   margin-top: 25px;
   font-size: 1.8em;
@@ -422,6 +427,8 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .page5-bottomContent__phone {
@@ -643,7 +650,7 @@ a:hover {
   left: 0px;
   display: none;
   background: #1F1F1F;
-  z-index: 100;
+  z-index: 2;
 }
 
 .modalCallback-active {
@@ -795,7 +802,7 @@ a:hover {
   width: 100%;
   display: none;
   background: #1F1F1F;
-  z-index: 100;
+  z-index: 2;
 }
 
 .modalVideo-active {
@@ -856,6 +863,176 @@ a:hover {
   font-family: 'Roboto Bold', serif;
 }
 
+.modalSwipeme {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 0px 10px 0px 11px;
+  height: 50vh;
+  background-color: #1f1f1f;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modalSwipeme::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-color: #181818;
+  opacity: 0.6;
+}
+
+.modalSwipeme-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+  background: #181818 url(../img/main/bg.png) no-repeat center center;
+  background-size: cover;
+  z-index: 2;
+}
+
+.modalSwipeme-wrapper-active {
+  display: block;
+}
+
+.modalSwipeme-close {
+  position: absolute;
+  display: block;
+  top: 10px;
+  right: 15px;
+  font-size: 3.5em;
+  font-weight: 900;
+  z-index: 101;
+}
+
+.modalSwipeme-content {
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.modalSwipeme-text {
+  max-width: 300px;
+  margin-top: 25px;
+  font-size: 1.4em;
+  line-height: 18px;
+}
+
+.modalSwipeme-text:first-child {
+  margin-top: 0;
+}
+
+.modalSwipeme-text span {
+  font-family: 'Roboto Bold', serif;
+}
+
+.modalSite {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 0px 10px 0px 11px;
+  height: 50vh;
+  background-color: #1f1f1f;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modalSite-active {
+  display: block;
+}
+
+.modalSite::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: #181818;
+  opacity: 0.6;
+}
+
+.modalSite-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+  background: #181818 url(../img/main/bg.png) no-repeat center center;
+  background-size: cover;
+  z-index: 2;
+}
+
+.modalSite-wrapper-active {
+  display: block;
+}
+
+.modalSite-close {
+  position: absolute;
+  display: block;
+  top: 10px;
+  right: 15px;
+  font-size: 3.5em;
+  font-weight: 900;
+  z-index: 101;
+}
+
+.modalSite-content {
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.modalSite-text {
+  max-width: 300px;
+  margin-top: 25px;
+  font-size: 1.4em;
+  line-height: 18px;
+}
+
+.modalSite-text span {
+  font-family: 'Roboto Bold', serif;
+}
+
+.modalSite-text:first {
+  margin-top: 0;
+}
+
 .warning {
   position: absolute;
   top: 0;
@@ -899,6 +1076,12 @@ a:hover {
   .page4-contacts span {
     font-size: 0.8em;
   }
+  .modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content {
+    height: 60vh;
+  }
+  .modalSwipeme-text, .modalSite-text {
+    margin-top: 10px;
+  }
 }
 
 @media (max-height: 545px) {
@@ -919,6 +1102,12 @@ a:hover {
   }
   .plyr {
     max-height: 400px;
+  }
+  .modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content {
+    height: 70vh;
+  }
+  .modalSwipeme-text, .modalSite-text {
+    margin-top: 10px;
   }
 }
 

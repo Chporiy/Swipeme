@@ -20,6 +20,12 @@ $(document).ready(function () {
     MODAL_VIDEO = $('.modalVideo'),
     MODAL_VIDEO_SHOW_BUTTON = $('.footer-video'),
     MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'),
+    MODAL_SWIPEME = $('.modalSwipeme-wrapper'),
+    MODAL_SWIPEME_SHOW_BUTTON = $('.footer-contact__text'),
+    MODAL_SWIPEME_CLOSE_BUTTON = $('.modalSwipeme-close'),
+    MODAL_SITE = $('.modalSite-wrapper'),
+    MODAL_SITE_SHOW_BUTTON = $('.page4-yoursite__button'),
+    MODAL_SITE_CLOSE_BUTTON = $('.modalSite-close'),
     PLAYER = new Plyr('#player', {
       controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
       setting: ['captions', 'quality', 'speed', 'loop'],
@@ -163,7 +169,7 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    // $('body')[0].__overlayScrollbars__.scroll(0);
+    $('body')[0].__overlayScrollbars__.scroll(0);
   }
 
   const toggleModalCallback = () => {
@@ -187,7 +193,15 @@ $(document).ready(function () {
     OS_CONTENT.css('overflow', OS_CONTENT.css('overflow') === 'visible' ? 'hidden' : 'visible');
   }
 
-  // Slider
+  const toggleModalSwipeme = () => {
+    MODAL_SWIPEME.toggleClass('modalSwipeme-wrapper-active');
+  }
+
+  const toggleModalSite = () => {
+    MODAL_SITE.toggleClass('modalSite-wrapper-active');
+  }
+ 
+ // Slider
   enableSlider(SLIDER_OPTIONS);
 
   SLIDER.on('click', event => {
@@ -225,13 +239,13 @@ $(document).ready(function () {
   });
 
   // Hide Scroll
-  // OverlayScrollbars($("body"), {
-  //   clipAlways: false,
-  //   scrollbars: {
-  //     visibility: 'hidden',
-  //     touchSupport: false
-  //   }
-  // });
+  OverlayScrollbars($("body"), {
+    clipAlways: false,
+    scrollbars: {
+      visibility: 'hidden',
+      touchSupport: false
+    }
+  });
 
   // Window Events
   $(window)
@@ -306,6 +320,28 @@ $(document).ready(function () {
     toggleOverflowOsContent();
   });
   
+  // MODAL SWIPEME
+  MODAL_SWIPEME_SHOW_BUTTON.on('click', () => {
+    toggleModalSwipeme();
+    scrollToTop();
+  });
+  
+  MODAL_SWIPEME_CLOSE_BUTTON.on('click', () => {
+    toggleModalSwipeme();
+    scrollToTop();
+  });
+
+  // MODAL SITE
+  MODAL_SITE_SHOW_BUTTON.on('click', (event) => {
+    event.stopImmediatePropagation();
+    toggleModalSite();
+    scrollToTop();
+  });
+  
+  MODAL_SITE_CLOSE_BUTTON.on('click', () => {
+    toggleModalSite();
+    scrollToTop();
+  });
 
   if (isMobile.any()) {
     setPagesClickHandler();

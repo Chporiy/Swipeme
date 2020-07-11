@@ -52,7 +52,9 @@ a:hover
 			outline: none
 			background-color: $whatsapp_button
 	&_site
-		padding: 25px 0px
+		// padding: 25px 0px
+		height: 70px
+		width: 100%
 		display: block
 		background-color: $text_color_light
 		font-family: 'Roboto Bold', sans-serif
@@ -217,6 +219,8 @@ a:hover
 			line-height: 23px
 	&-yoursite
 		margin-top: 30px
+		&__button
+			display: block
 	&-bottomContent
 		&__text
 			margin-top: 25px
@@ -271,6 +275,7 @@ a:hover
 			margin-top: 40px
 			display: flex
 			align-items: center
+			justify-content: space-around
 		&__phone
 			margin-right: 20px
 		&__text
@@ -423,7 +428,7 @@ a:hover
 	left: 0px
 	display: none
 	background: #1F1F1F
-	z-index: 100
+	z-index: 2
 	&-active
 		display: block
 	&-close
@@ -519,7 +524,7 @@ a:hover
 	width: 100%
 	display: none
 	background: #1F1F1F
-	z-index: 100
+	z-index: 2
 	&-active
 		display: block
 	&-close
@@ -555,6 +560,122 @@ a:hover
 			span
 				font-family: 'Roboto Bold', serif
 
+.modalSwipeme
+	position: fixed
+	bottom: 0px
+	left: 0px
+	width: 100%
+	padding: 0px 10px 0px 11px
+	height: 50vh
+	background-color: #1f1f1f
+	border-top-left-radius: 10px
+	border-top-right-radius: 10px
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		top: -100%
+		left: 0
+		width: 100%
+		height: 200%
+		background-color: #181818
+		opacity: 0.6
+	&-wrapper
+		position: fixed
+		top: 0
+		left: 0
+		height: 100vh
+		width: 100%
+		display: none
+		background: #181818 url(../img/main/bg.png) no-repeat center center
+		background-size: cover
+		z-index: 2
+		&-active
+			display: block
+	&-close
+		position: absolute
+		display: block
+		top: 10px
+		right: 15px
+		font-size: 3.5em
+		font-weight: 900
+		z-index: 101
+	&-content
+		height: 50vh
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+		text-align: center
+	&-text
+		max-width: 300px
+		margin-top: 25px
+		font-size: 1.4em
+		line-height: 18px
+		&:first-child
+			margin-top: 0
+		span
+			font-family: 'Roboto Bold', serif
+
+.modalSite
+	position: fixed
+	bottom: 0px
+	left: 0px
+	width: 100%
+	padding: 0px 10px 0px 11px
+	height: 50vh
+	background-color: #1f1f1f
+	border-top-left-radius: 10px
+	border-top-right-radius: 10px
+	&-active
+		display: block
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		top: -100%
+		left: 0
+		width: 100%
+		height: 200%
+		background: #181818
+		opacity: 0.6
+	&-wrapper
+		position: fixed
+		top: 0
+		left: 0
+		height: 100vh
+		width: 100%
+		display: none
+		background: #181818 url(../img/main/bg.png) no-repeat center center
+		background-size: cover
+		z-index: 2
+		&-active
+			display: block
+	&-close
+		position: absolute
+		display: block
+		top: 10px
+		right: 15px
+		font-size: 3.5em
+		font-weight: 900
+		z-index: 101
+	&-content
+		height: 50vh
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+		text-align: center
+	&-text
+		max-width: 300px
+		margin-top: 25px
+		font-size: 1.4em
+		line-height: 18px
+		span
+			font-family: 'Roboto Bold', serif
+		&:first
+			margin-top: 0
+
 .warning
 	position: absolute
 	top: 0
@@ -584,6 +705,10 @@ a:hover
 		left: 20px
 	.page4-contacts span
 		font-size: 0.8em
+	.modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content
+		height: 60vh
+	.modalSwipeme-text, .modalSite-text
+		margin-top: 10px
 
 @media (max-height: 545px)
 	.page1-content
@@ -598,6 +723,10 @@ a:hover
 		margin-top: 30px
 	.plyr
 		max-height: 400px
+	.modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content
+		height: 70vh
+	.modalSwipeme-text, .modalSite-text
+		margin-top: 10px
 
 @media (min-height: 546px) and (max-height: 649px)
 	.page1-content

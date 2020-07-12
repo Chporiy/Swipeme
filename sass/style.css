@@ -644,14 +644,15 @@ a:hover {
 }
 
 .modalCallback {
+  padding-bottom: 45px;
   position: fixed;
   left: 0px;
   bottom: 0px;
   width: 100%;
+  height: 100vh;
   background: #1F1F1F;
   z-index: 2;
   overflow-y: scroll;
-  height: 100vh;
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
   -webkit-transition: all 0.5s linear;
@@ -745,6 +746,7 @@ a:hover {
 
 .modalCallback-social {
   margin-top: 41px;
+  margin-bottom: 15px;
 }
 
 .modalCallback-social__title {
@@ -1101,17 +1103,11 @@ a:hover {
   .modalCallback {
     padding-bottom: 25px;
   }
-  .modalVideo {
-    padding-bottom: 25px;
-  }
-  .modalVideo-close {
-    top: 35px;
-  }
-  .modalVideo-content__video {
-    margin-top: 30px;
-  }
   .plyr {
     max-height: 400px;
+  }
+  .plyr video {
+    height: auto;
   }
   .modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content {
     height: 70vh;
@@ -1134,8 +1130,8 @@ a:hover {
   .page1-content {
     margin-top: 100%;
   }
-  .modalCallback {
-    padding-bottom: 25px;
+  .modalCallback-social {
+    margin-bottom: 25px;
   }
 }
 

@@ -305,8 +305,19 @@ $(document).ready(function () {
   });
   
   // FORM
-  FORM.on('submit', event => {
+  FORM.on('submit', function (event) {
     event.preventDefault();
+    const data = $(this).serialize();
+    console.log(data);
+    $.ajax({
+      type: "POST",
+      url: "send.php",
+      data: data
+    }).done(function() {
+      console.log(data);
+      alert("Заявка отправлена!");
+    });
+    return false;
   });
   
   // Modal Callback

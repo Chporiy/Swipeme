@@ -85,16 +85,7 @@ $(document).ready(function () {
           const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
           $(this).height(newPageHeight);
         }
-        // $(this).css('left', `${documentWidth * indx}px`);
       });
-  }
-  
-  const changeBodyBackgroungImage = (pageNumber) => {
-    // if (pageNumber == 0) {
-    //   $('body').css('background-image', 'url(./img/main/bg.png)')
-    // } else {
-    //   $('body').css('background-image', 'url(./img/main/bg2.png)')
-    // }
   }
 
   const setModalCallbackHeight = () => {
@@ -150,7 +141,7 @@ $(document).ready(function () {
   }
 
   const setPagesClickHandler = () => {
-    $('.page').on('click', event => {
+    $('.page-slider, .footer').on('click', event => {
       clickPageHandler(event);
     });
   }
@@ -232,7 +223,6 @@ $(document).ready(function () {
   SLIDER.on('afterChange', (event, slick, currentPageNumber) => {
     scrollToTop();
     changePageIndicator(currentPageNumber);
-    changeBodyBackgroungImage(currentPageNumber);
     activePageNumber = currentPageNumber;
   });
 
@@ -325,6 +315,7 @@ $(document).ready(function () {
     // setModalCallbackHeight();
     toggleOverflowOsContent();
     scrollToTop();
+    return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
@@ -342,6 +333,7 @@ $(document).ready(function () {
     toggleModalVideo();
     scrollToTop();
     toggleOverflowOsContent();
+    return false;
   });
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
@@ -362,6 +354,7 @@ $(document).ready(function () {
   MODAL_SWIPEME_SHOW_BUTTON.on('click', () => {
     toggleModalSwipeme();
     scrollToTop();
+    return false;
   });
   
   MODAL_SWIPEME_CLOSE_BUTTON.on('click', () => {

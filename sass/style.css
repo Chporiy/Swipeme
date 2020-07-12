@@ -645,7 +645,8 @@ a:hover {
 
 .modalCallback {
   position: fixed;
-  top: 0px;
+  left: 0px;
+  bottom: 0px;
   width: 100%;
   background: #1F1F1F;
   z-index: 2;

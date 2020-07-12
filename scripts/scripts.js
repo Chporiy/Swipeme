@@ -37,7 +37,7 @@ $(document).ready(function () {
     });
     PLAYER_MINI = new Plyr('.player-mini', {
       controls: [],
-      autoplay: true
+      // autoplay: true
     });
     SLIDER_OPTIONS = {
       accessibility: false,
@@ -337,13 +337,11 @@ $(document).ready(function () {
   // Modal Video
   MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
     PLAYER_MINI.stop();
+    PLAYER_BIG.play();
     
     toggleModalVideo();
     scrollToTop();
     toggleOverflowOsContent();
-    
-    PLAYER_BIG.volume = 1;
-    PLAYER_BIG.play();
   });
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
@@ -393,8 +391,12 @@ $(document).ready(function () {
     toggleWarningBlock();
     toggleOverflowOsContent();
   }
-  
+
   PLAYER_MINI.volume = 0;
   PLAYER_MINI.loop = true;
+  PLAYER_BIG.volume = 1;
+  PLAYER_MINI.on('canplay', event => {
+    PLAYER_MINI.play();
+  });
 });
 

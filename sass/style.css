@@ -667,7 +667,7 @@ a:hover {
 .modalCallback-close {
   position: absolute;
   display: block;
-  top: 15px;
+  top: 95px;
   right: 25px;
   font-size: 3em;
   font-weight: 900;
@@ -675,7 +675,7 @@ a:hover {
 }
 
 .modalCallback-top {
-  margin-top: 75px;
+  margin-top: 95px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -704,7 +704,7 @@ a:hover {
 }
 
 .modalCallback-form {
-  margin-top: 50px;
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -745,7 +745,7 @@ a:hover {
 }
 
 .modalCallback-social {
-  margin-top: 41px;
+  margin-top: 30px;
   margin-bottom: 15px;
 }
 

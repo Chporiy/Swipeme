@@ -37,6 +37,7 @@ $(document).ready(function () {
     });
     PLAYER_MINI = new Plyr('.player-mini', {
       controls: [],
+      muted: true
       // autoplay: true
     });
     SLIDER_OPTIONS = {
@@ -237,6 +238,8 @@ $(document).ready(function () {
 
   // FAQ
   FAQ_BLOCK.on('click', function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
     $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
     return false;
   });
@@ -393,6 +396,11 @@ $(document).ready(function () {
   PLAYER_MINI.volume = 0;
   PLAYER_MINI.loop = true;
   PLAYER_MINI.on('canplay', event => {
+    // console.log(event.detail.plyr)
+    PLAYER_MINI.play();
+  });
+  PLAYER_MINI.on('canplaythrough', event => {
+    // console.log(event.detail.plyr)
     PLAYER_MINI.play();
   });
 });

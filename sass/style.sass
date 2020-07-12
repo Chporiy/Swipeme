@@ -421,16 +421,17 @@ a:hover
 	width: 100%
 
 .modalCallback
-	position: absolute
+	position: fixed
 	top: 0px
 	width: 100%
-	display: none
 	background: #1F1F1F
 	z-index: 2
 	overflow-y: scroll
 	height: 100vh
+	transform: translateY(100%)
+	transition: all 0.5s linear
 	&-active
-		display: block
+		transform: translateY(0%)
 	&-close
 		position: absolute
 		display: block
@@ -518,15 +519,19 @@ a:hover
 
 .modalVideo
 	height: 100vh !important
-	position: absolute
-	top: 0px
-	left: 0px
+	position: fixed
+	bottom: 32px
+	left: 28px
 	width: 100%
-	display: none
 	background: #1F1F1F
 	z-index: 2
+	transform: scale(0)
+	transform-origin: left bottom
+	transition: all 0.3s linear
 	&-active
-		display: block
+		bottom: 0
+		left: 0
+		transform: scale(1)
 	&-close
 		position: absolute
 		display: block
@@ -574,25 +579,16 @@ a:hover
 	bottom: 0px
 	left: 0px
 	width: 100%
-	display: none
 	padding: 0px 10px 0px 11px
 	height: 50vh
 	background-color: #1f1f1f
 	border-top-left-radius: 10px
 	border-top-right-radius: 10px
 	z-index: 2
+	transform: translateY(200%)
+	transition: all 0.5s ease-in
 	&-active
-		display: block
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		top: -100%
-		left: 0
-		width: 100%
-		height: 200%
-		background-color: #181818
-		opacity: 0.6
+		transform: translateY(0%)
 	&-close
 		position: absolute
 		display: block
@@ -625,23 +621,14 @@ a:hover
 	width: 100%
 	padding: 0px 10px 0px 11px
 	height: 50vh
-	display: none
 	background-color: #1f1f1f
 	border-top-left-radius: 10px
 	border-top-right-radius: 10px
 	z-index: 2
+	transform: translateY(200%)
+	transition: all 0.5s ease-in-out
 	&-active
-		display: block
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		top: -100%
-		left: 0
-		width: 100%
-		height: 200%
-		background: #181818
-		opacity: 0.6
+		transform: translateY(0%)
 	&-close
 		position: absolute
 		display: block
@@ -667,6 +654,20 @@ a:hover
 		&:first
 			margin-top: 0
 
+.modalOverlay
+	position: absolute
+	top: -100%
+	left: 0
+	width: 100%
+	height: 200%
+	background: #181818
+	opacity: 0
+	z-index: -1
+	transition: all 0.5s
+	&-active
+		opacity: 0.7
+		z-index: 0
+
 .warning
 	position: absolute
 	top: 0
@@ -687,7 +688,6 @@ a:hover
 			line-height: 42px
 			text-align: center
 		
-
 @media (max-width: 320px)
 	body
 		font-size: 8px
@@ -762,3 +762,12 @@ a:hover
 		width: 375px
 		
 		
+@keyframes slideInDown
+  from
+    -webkit-transform: translate3d(0, 100%, 0)
+    transform: translate3d(0, 100%, 0)
+    visibility: visible
+  to
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  

@@ -8,7 +8,8 @@ $(document).ready(function () {
   };
 
   let currentPageNumber = 0;
-  
+  let activePageNumber = 0;
+
   const FAQ_BLOCK = $('.page7-FAQ__block'),
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider'),
@@ -76,6 +77,7 @@ $(document).ready(function () {
 
   const setPagesHeight = () => {
       const documentHeight = $(document).height();
+      let documentWidth = $(document).width();
       $(".page").each(function(indx) {
         const pageHeight = $(this).height();
         const emptySpace = documentHeight - pageHeight;
@@ -83,9 +85,18 @@ $(document).ready(function () {
           const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
           $(this).height(newPageHeight);
         }
+        // $(this).css('left', `${documentWidth * indx}px`);
       });
   }
   
+  const changeBodyBackgroungImage = (pageNumber) => {
+    // if (pageNumber == 0) {
+    //   $('body').css('background-image', 'url(./img/main/bg.png)')
+    // } else {
+    //   $('body').css('background-image', 'url(./img/main/bg2.png)')
+    // }
+  }
+
   const setModalCallbackHeight = () => {
     const documentHeight = $(document).height();
     const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
@@ -171,7 +182,8 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    $('body')[0].__overlayScrollbars__.scroll(0);
+    // $('body')[0].__overlayScrollbars__.scroll(0);
+    $('body, html').scrollTop(0);
   }
 
   const toggleModalCallback = () => {
@@ -196,11 +208,18 @@ $(document).ready(function () {
   }
 
   const toggleModalSwipeme = () => {
+    $('.modalOverlay').toggleClass('modalOverlay-active');
     MODAL_SWIPEME.toggleClass('modalSwipeme-active');
   }
 
   const toggleModalSite = () => {
+    $('.modalOverlay').toggleClass('modalOverlay-active');
     MODAL_SITE.toggleClass('modalSite-active');
+  }
+
+  const parallax = (selector) => {
+    const scrolled = $(window).scrollTop();
+    $(selector).css('background-position',`50% ${scrolled * 1}px`);
   }
  
  // Slider
@@ -213,6 +232,8 @@ $(document).ready(function () {
   SLIDER.on('afterChange', (event, slick, currentPageNumber) => {
     scrollToTop();
     changePageIndicator(currentPageNumber);
+    changeBodyBackgroungImage(currentPageNumber);
+    activePageNumber = currentPageNumber;
   });
 
   // Header Navigation
@@ -241,13 +262,13 @@ $(document).ready(function () {
   });
 
   // Hide Scroll
-  OverlayScrollbars($("body"), {
-    clipAlways: false,
-    scrollbars: {
-      visibility: 'hidden',
-      touchSupport: false
-    }
-  });
+  // OverlayScrollbars($("body"), {
+  //   clipAlways: false,
+  //   scrollbars: {
+  //     visibility: 'hidden',
+  //     touchSupport: false
+  //   }
+  // });
 
   // Window Events
   $(window)
@@ -260,6 +281,9 @@ $(document).ready(function () {
         setPagesHeight();
         setPagesWidth();
       }
+    })
+    .on('scroll', () => {
+      parallax(`.page${activePageNumber + 1}`);
     })
     
     // Form Phone
@@ -369,17 +393,8 @@ $(document).ready(function () {
     toggleWarningBlock();
     toggleOverflowOsContent();
   }
-
+  
   PLAYER_MINI.volume = 0;
   PLAYER_MINI.loop = true;
-
-  // function parallax(selector){
-  //   const scrolled = $(window).scrollTop();
-  //   $(selector).css('background-position',"0 "+  (scrolled * 1) + 'px');
-  // }
-
-  // $(window).on('scroll', () => {
-  //   parallax('.page-slider .page');
-  // })
 });
 

@@ -644,18 +644,22 @@ a:hover {
 }
 
 .modalCallback {
-  position: absolute;
+  position: fixed;
   top: 0px;
   width: 100%;
-  display: none;
   background: #1F1F1F;
   z-index: 2;
   overflow-y: scroll;
   height: 100vh;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
 }
 
 .modalCallback-active {
-  display: block;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 .modalCallback-close {
@@ -797,17 +801,25 @@ a:hover {
 
 .modalVideo {
   height: 100vh !important;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  position: fixed;
+  bottom: 32px;
+  left: 28px;
   width: 100%;
-  display: none;
   background: #1F1F1F;
   z-index: 2;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 
 .modalVideo-active {
-  display: block;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .modalVideo-close {
@@ -883,29 +895,21 @@ a:hover {
   bottom: 0px;
   left: 0px;
   width: 100%;
-  display: none;
   padding: 0px 10px 0px 11px;
   height: 50vh;
   background-color: #1f1f1f;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   z-index: 2;
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .modalSwipeme-active {
-  display: block;
-}
-
-.modalSwipeme::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background-color: #181818;
-  opacity: 0.6;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 .modalSwipeme-close {
@@ -958,27 +962,19 @@ a:hover {
   width: 100%;
   padding: 0px 10px 0px 11px;
   height: 50vh;
-  display: none;
   background-color: #1f1f1f;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   z-index: 2;
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .modalSite-active {
-  display: block;
-}
-
-.modalSite::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background: #181818;
-  opacity: 0.6;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 .modalSite-close {
@@ -1022,6 +1018,24 @@ a:hover {
 
 .modalSite-text:first {
   margin-top: 0;
+}
+
+.modalOverlay {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: #181818;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.modalOverlay-active {
+  opacity: 0.7;
+  z-index: 0;
 }
 
 .warning {
@@ -1153,6 +1167,30 @@ a:hover {
   }
   .header, .footer {
     width: 375px;
+  }
+}
+
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 /*# sourceMappingURL=style.css.map */

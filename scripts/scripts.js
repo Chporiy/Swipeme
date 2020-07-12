@@ -207,11 +207,6 @@ $(document).ready(function () {
     $('.modalOverlay').toggleClass('modalOverlay-active');
     MODAL_SITE.toggleClass('modalSite-active');
   }
-
-  const parallax = (selector) => {
-    const scrolled = $(window).scrollTop();
-    $(selector).css('background-position',`50% ${scrolled * 1}px`);
-  }
  
  // Slider
   enableSlider(SLIDER_OPTIONS);
@@ -252,13 +247,13 @@ $(document).ready(function () {
   });
 
   // Hide Scroll
-  // OverlayScrollbars($("body"), {
-  //   clipAlways: false,
-  //   scrollbars: {
-  //     visibility: 'hidden',
-  //     touchSupport: false
-  //   }
-  // });
+  OverlayScrollbars($("body"), {
+    clipAlways: false,
+    scrollbars: {
+      visibility: 'hidden',
+      touchSupport: false
+    }
+  });
 
   // Window Events
   $(window)
@@ -271,9 +266,6 @@ $(document).ready(function () {
         setPagesHeight();
         setPagesWidth();
       }
-    })
-    .on('scroll', () => {
-      parallax(`.page${activePageNumber + 1}`);
     })
     
     // Form Phone
@@ -338,6 +330,7 @@ $(document).ready(function () {
   
   // Modal Video
   MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
+    PLAYER_BIG.volume = 1;
     PLAYER_MINI.stop();
     PLAYER_BIG.play();
     
@@ -349,6 +342,7 @@ $(document).ready(function () {
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
     const bigPlayerTime = Math.floor(PLAYER_BIG.currentTime);
+    PLAYER_BIG.volume = 0;
     PLAYER_BIG.stop();
     
     toggleModalVideo();
@@ -398,7 +392,6 @@ $(document).ready(function () {
 
   PLAYER_MINI.volume = 0;
   PLAYER_MINI.loop = true;
-  PLAYER_BIG.volume = 1;
   PLAYER_MINI.on('canplay', event => {
     PLAYER_MINI.play();
   });

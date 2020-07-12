@@ -403,5 +403,37 @@ $(document).ready(function () {
     // console.log(event.detail.plyr)
     PLAYER_MINI.play();
   });
+
+  // if (document.documentElement.requestFullscreen) {
+  //   document.documentElement.requestFullscreen();
+  // } else if (document.documentElement.webkitrequestFullscreen) {
+  //   document.documentElement.webkitrequestFullscreen();
+  // } else if (document.documentElement.mozrequestFullscreen) {
+  //   document.documentElement.mozrequestFullscreen();
+  // } else if (document.documentElement.msrequestFullscreen) {
+  //   document.documentElement.msrequestFullscreen();
+  // }
+
+  function toggleFullScreen() {
+    var doc = window.document;
+    var docEl = doc.documentElement;
+    
+    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
+    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen;
+    
+    if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
+      requestFullScreen.call(docEl);
+    }
+    else {
+      cancelFullScreen.call(doc);  
+    }
+  }
+
+  // $('body').on('click', () => {
+    toggleFullScreen()
+  // });
+  
+
+
 });
 

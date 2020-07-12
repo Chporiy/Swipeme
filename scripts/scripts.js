@@ -53,14 +53,14 @@ $(document).ready(function () {
       touchThreshold: 500,
       variableWidth: true,
       waitForAnimate: false,
-      responsive: [
-        {
-          breakpoint: 576,
-          settings: {
-            touchThreshold: 5
-          }
-        }
-      ]
+      // responsive: [
+      //   {
+      //     breakpoint: 1000,
+      //     settings: {
+      //       touchThreshold: 5
+      //     }
+      //   }
+      // ]
     },
     PLAYER_DURATION = Math.floor(PLAYER_BIG.duration);
 
@@ -75,15 +75,15 @@ $(document).ready(function () {
   }
 
   const setPagesHeight = () => {
-    const documentHeight = $(document).height();
-    $(".page").each(function(indx) {
-      const pageHeight = $(this).height();
-      const emptySpace = documentHeight - pageHeight;
-      if (emptySpace > 0) {
-        const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
-        $(this).height(newPageHeight);
-      }
-    });
+      const documentHeight = $(document).height();
+      $(".page").each(function(indx) {
+        const pageHeight = $(this).height();
+        const emptySpace = documentHeight - pageHeight;
+        if (emptySpace > 0) {
+          const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
+          $(this).height(newPageHeight);
+        }
+      });
   }
   
   const setModalCallbackHeight = () => {
@@ -128,10 +128,7 @@ $(document).ready(function () {
   }
 
   const isWindowLandscape = () => {
-    const width = $(document).width();
-    const height = $(document).height();
-
-    return width > height;
+    return ~screen.orientation.type.indexOf('landscape')
   }
 
   const toggleWarningBlock = () => {
@@ -260,8 +257,8 @@ $(document).ready(function () {
     })
     .on('resize', () => {
       if (!isWindowLandscape()) {
-        setPagesWidth();
         setPagesHeight();
+        setPagesWidth();
       }
     })
     
@@ -292,7 +289,6 @@ $(document).ready(function () {
       placeholder: "+7 000 000-00-00"
     });
   });
-
   
   // FORM
   FORM.on('submit', event => {

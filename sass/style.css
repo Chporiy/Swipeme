@@ -647,7 +647,7 @@ a:hover {
   padding-bottom: 45px;
   position: fixed;
   left: 0px;
-  bottom: 0px;
+  top: 0px;
   width: 100%;
   height: 100vh;
   background: #1F1F1F;
@@ -667,7 +667,7 @@ a:hover {
 .modalCallback-close {
   position: absolute;
   display: block;
-  top: 95px;
+  top: 15px;
   right: 25px;
   font-size: 3em;
   font-weight: 900;
@@ -675,7 +675,7 @@ a:hover {
 }
 
 .modalCallback-top {
-  margin-top: 95px;
+  margin-top: 75px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -805,6 +805,7 @@ a:hover {
 .modalVideo {
   height: 100vh !important;
   position: fixed;
+  top: 0;
   bottom: 32px;
   left: 28px;
   width: 100%;
@@ -819,6 +820,7 @@ a:hover {
 }
 
 .modalVideo-active {
+  top: 0;
   bottom: 0;
   left: 0;
   -webkit-transform: scale(1);

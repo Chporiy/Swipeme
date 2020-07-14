@@ -78,35 +78,35 @@ $(document).ready(function () {
   }
 
   const setPagesHeight = () => {
-      const documentHeight = $(document).height();
-      let documentWidth = $(document).width();
-      $(".page").each(function(indx) {
-        const pageHeight = $(this).height();
-        const emptySpace = documentHeight - pageHeight;
-        if (emptySpace > 0) {
-          const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
-          $(this).height(newPageHeight);
-        }
-        $()
-      });
+    const documentHeight = $(document).height();
+    $(".page").each(function(indx) {
+      const pageHeight = $(this).height();
+      const emptySpace = documentHeight - pageHeight;
+      if (emptySpace > 0) {
+        const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
+        $(this).height(newPageHeight);
+      }
+      $()
+    });
+    MODAL_VIDEO.height(documentHeight);
   }
 
-  const setModalCallbackHeight = () => {
-    const documentHeight = $(document).height();
-    const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
-    const emptySpace = pageHeight - documentHeight;
-    if (emptySpace > 0) {
-      const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
-      MODAL_CALLBACK.height(newModalHeight);
-    } else {
-      resetModalCallbackHeight();
-    }
-  }
+  // const setModalCallbackHeight = () => {
+  //   const documentHeight = $(document).height();
+  //   const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
+  //   const emptySpace = pageHeight - documentHeight;
+  //   if (emptySpace > 0) {
+  //     const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
+  //     MODAL_CALLBACK.height(newModalHeight);
+  //   } else {
+  //     resetModalCallbackHeight();
+  //   }
+  // }
 
-  const resetModalCallbackHeight = () => {
-    const documentHeight = $(document).height();
-    MODAL_CALLBACK.height(documentHeight);
-  }
+  // const resetModalCallbackHeight = () => {
+  //   const documentHeight = $(document).height();
+  //   MODAL_CALLBACK.height(documentHeight);
+  // }
   
   const showAnswer = (element) => {
     element.addClass('page7-FAQ__block_active');

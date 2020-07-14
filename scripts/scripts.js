@@ -54,6 +54,7 @@ $(document).ready(function () {
       swipeToSlide: true,
       touchThreshold: 500,
       variableWidth: true,
+      // useTransform: false,
       waitForAnimate: false,
       // responsive: [
       //   {
@@ -86,6 +87,7 @@ $(document).ready(function () {
           const newPageHeight = emptySpace <= 157 ? pageHeight + emptySpace + 157 : pageHeight + emptySpace; 
           $(this).height(newPageHeight);
         }
+        $()
       });
   }
 
@@ -174,8 +176,7 @@ $(document).ready(function () {
   }
 
   const scrollToTop = () => {
-    // $('body')[0].__overlayScrollbars__.scroll(0);
-    $('body, html').scrollTop(0);
+    $('body')[0].__overlayScrollbars__.scroll(0);
   }
 
   const toggleModalCallback = () => {
@@ -217,6 +218,7 @@ $(document).ready(function () {
   });
 
   SLIDER.on('afterChange', (event, slick, currentPageNumber) => {
+    console.log('afterChange')
     scrollToTop();
     changePageIndicator(currentPageNumber);
     activePageNumber = currentPageNumber;
@@ -362,12 +364,14 @@ $(document).ready(function () {
   MODAL_SWIPEME_SHOW_BUTTON.on('click', () => {
     toggleModalSwipeme();
     scrollToTop();
+    toggleOverflowOsContent();
     return false;
   });
   
   MODAL_SWIPEME_CLOSE_BUTTON.on('click', () => {
     toggleModalSwipeme();
     scrollToTop();
+    toggleOverflowOsContent();
   });
 
   // MODAL SITE
@@ -375,11 +379,13 @@ $(document).ready(function () {
     event.stopImmediatePropagation();
     toggleModalSite();
     scrollToTop();
+    toggleOverflowOsContent();
   });
   
   MODAL_SITE_CLOSE_BUTTON.on('click', () => {
     toggleModalSite();
     scrollToTop();
+    toggleOverflowOsContent();
   });
 
   if (isMobile.any()) {

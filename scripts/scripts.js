@@ -10,7 +10,8 @@ $(document).ready(function () {
   let currentPageNumber = 0;
   let activePageNumber = 0;
 
-  const FAQ_BLOCK = $('.page7-FAQ__block'),
+  const FAQ = $('.page7-FAQ'), 
+    FAQ_BLOCK = $('.page7-FAQ__block'),
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider'),
     MODAL_CALLBACK = $('.modalCallback'),
@@ -195,7 +196,6 @@ $(document).ready(function () {
   });
 
   SLIDER.on('afterChange', (event, slick, currentPageNumber) => {
-    console.log('afterChange')
     scrollToTop();
     changePageIndicator(currentPageNumber);
     activePageNumber = currentPageNumber;
@@ -215,10 +215,14 @@ $(document).ready(function () {
     }
   });
 
-  // FAQ
-  FAQ_BLOCK.on('click', function (event) {
+  // FAQ  
+  FAQ.on('click', function (event) {
     event.stopImmediatePropagation();
-    $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
+    
+    const target = event.target;
+    const faqBlock = $(target).hasClass('page7-FAQ__block') ? $(target) : $(target).parents('.page7-FAQ__block');
+    
+    faqBlock.hasClass('page7-FAQ__block_active') ? hideAnswer(faqBlock) : showAnswer(faqBlock);
   });
 
   // Links

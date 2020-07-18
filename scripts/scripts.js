@@ -217,7 +217,7 @@ $(document).ready(function () {
 
   // FAQ  
   FAQ.on('click', function (event) {
-    event.stopImmediatePropagation();
+    event.stopPropagation();
     
     const target = event.target;
     const faqBlock = $(target).hasClass('page7-FAQ__block') ? $(target) : $(target).parents('.page7-FAQ__block');

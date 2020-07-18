@@ -28,17 +28,11 @@ $(document).ready(function () {
     MODAL_SITE_SHOW_BUTTON = $('.page4-yoursite__button'),
     MODAL_SITE_CLOSE_BUTTON = $('.modalSite-close'),
     PLAYER_BIG = new Plyr('.player-big', {
-      controls: ['play-large', 'play', 'progress', 'current-time'],
-      setting: ['captions', 'quality', 'speed', 'loop'],
-      quality: { 
-        default: 576, 
-        options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] 
-      }
+      controls: ['play-large', 'play', 'progress', 'current-time']
     });
     PLAYER_MINI = new Plyr('.player-mini', {
       controls: [],
       muted: true
-      // autoplay: true
     });
     SLIDER_OPTIONS = {
       accessibility: false,
@@ -90,23 +84,6 @@ $(document).ready(function () {
     });
     MODAL_VIDEO.height(documentHeight);
   }
-
-  // const setModalCallbackHeight = () => {
-  //   const documentHeight = $(document).height();
-  //   const pageHeight = $(`.page${getCurrentSlide() + 1}`).height();
-  //   const emptySpace = pageHeight - documentHeight;
-  //   if (emptySpace > 0) {
-  //     const newModalHeight = emptySpace <= 157 ? documentHeight + emptySpace + 157 : documentHeight + emptySpace; 
-  //     MODAL_CALLBACK.height(newModalHeight);
-  //   } else {
-  //     resetModalCallbackHeight();
-  //   }
-  // }
-
-  // const resetModalCallbackHeight = () => {
-  //   const documentHeight = $(document).height();
-  //   MODAL_CALLBACK.height(documentHeight);
-  // }
   
   const showAnswer = (element) => {
     element.addClass('page7-FAQ__block_active');
@@ -240,10 +217,8 @@ $(document).ready(function () {
 
   // FAQ
   FAQ_BLOCK.on('click', function (event) {
-    event.preventDefault();
     event.stopImmediatePropagation();
     $(this).hasClass('page7-FAQ__block_active') ? hideAnswer($(this)) : showAnswer($(this));
-    return false;
   });
 
   // Links
@@ -320,7 +295,6 @@ $(document).ready(function () {
   // Modal Callback
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
-    // setModalCallbackHeight();
     toggleOverflowOsContent();
     scrollToTop();
     return false;
@@ -328,13 +302,13 @@ $(document).ready(function () {
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
-    // resetModalCallbackHeight();
     toggleOverflowOsContent();
     scrollToTop();
   });
   
   // Modal Video
   MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
+    PLAYER_BIG.muted = false;
     PLAYER_BIG.volume = 1;
     PLAYER_MINI.stop();
     PLAYER_BIG.play();
@@ -347,6 +321,7 @@ $(document).ready(function () {
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
     const bigPlayerTime = Math.floor(PLAYER_BIG.currentTime);
+    PLAYER_BIG.muted = true;
     PLAYER_BIG.volume = 0;
     PLAYER_BIG.stop();
     
@@ -354,6 +329,7 @@ $(document).ready(function () {
     scrollToTop();
     toggleOverflowOsContent();
 
+    PLAYER_MINI.volume = 0;
     PLAYER_MINI.play();
     if (bigPlayerTime !== PLAYER_DURATION) {
       PLAYER_MINI.forward(bigPlayerTime);
@@ -401,45 +377,5 @@ $(document).ready(function () {
 
   PLAYER_MINI.volume = 0;
   PLAYER_MINI.loop = true;
-  PLAYER_MINI.on('canplay', event => {
-    // console.log(event.detail.plyr)
-    PLAYER_MINI.play();
-  });
-  PLAYER_MINI.on('canplaythrough', event => {
-    // console.log(event.detail.plyr)
-    PLAYER_MINI.play();
-  });
-
-  // if (document.documentElement.requestFullscreen) {
-  //   document.documentElement.requestFullscreen();
-  // } else if (document.documentElement.webkitrequestFullscreen) {
-  //   document.documentElement.webkitrequestFullscreen();
-  // } else if (document.documentElement.mozrequestFullscreen) {
-  //   document.documentElement.mozrequestFullscreen();
-  // } else if (document.documentElement.msrequestFullscreen) {
-  //   document.documentElement.msrequestFullscreen();
-  // }
-
-  // function toggleFullScreen() {
-  //   var doc = window.document;
-  //   var docEl = doc.documentElement;
-    
-  //   var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
-  //   var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen;
-    
-  //   if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-  //     requestFullScreen.call(docEl);
-  //   }
-  //   else {
-  //     cancelFullScreen.call(doc);  
-  //   }
-  // }
-
-  // $('body').on('click', () => {
-    // toggleFullScreen()
-  // });
-  
-
-
 });
 

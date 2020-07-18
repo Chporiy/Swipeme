@@ -4,6 +4,8 @@
 }
 
 body {
+  top: 0px;
+  left: 0px;
   color: #ffffff;
   font-family: 'Roboto Light', sans-serif;
   font-size: 10px;
@@ -137,7 +139,8 @@ a:hover {
 .header-overlay {
   position: absolute;
   top: -30px;
-  width: 100%;
+  left: -30px;
+  width: 140%;
   height: 60px;
   background: #1A1A1A;
 }
@@ -195,7 +198,7 @@ a:hover {
 }
 
 .page1-content {
-  margin-top: 400px;
+  margin-top: 440px;
 }
 
 .page1-content__title {
@@ -612,7 +615,8 @@ a:hover {
 .footer-overlay {
   position: absolute;
   bottom: -55px;
-  width: 100%;
+  left: -30px;
+  width: 140%;
   height: 170px;
   background: #1A1A1A;
 }
@@ -666,10 +670,10 @@ a:hover {
   left: 0px;
   top: 0px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #1F1F1F;
   z-index: 2;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
   -webkit-transform: translateY(200%);
           transform: translateY(200%);
   -webkit-transition: all 0.6s linear;
@@ -853,8 +857,17 @@ a:hover {
   z-index: 101;
 }
 
+.modalVideo-position {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .modalVideo-content {
-  position: relative;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1150,7 +1163,7 @@ a:hover {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .os-content, .os-viewport, .os-padding {
     position: absolute !important;
     top: 50% !important;

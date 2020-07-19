@@ -178,6 +178,20 @@ $(document).ready(function () {
     const OS_CONTENT = $('.os-content');
     OS_CONTENT.css('overflow', OS_CONTENT.css('overflow') === 'visible' ? 'hidden' : 'visible');
   }
+  
+  const setOverflowPageSlider = () => {
+    const OS_CONTENT = $('.os-content');
+    
+    SLIDER.css('overflow', 'hidden');
+    OS_CONTENT.css('height', '100vh');
+  }
+  
+  const offOverflowPageSlider = () => {
+    const OS_CONTENT = $('.os-content');
+    
+    SLIDER.css('overflow', 'auto');
+    OS_CONTENT.css('height', '100%');
+  }
 
   const toggleModalSwipeme = () => {
     $('.modalOverlay').toggleClass('modalOverlay-active');
@@ -302,12 +316,14 @@ $(document).ready(function () {
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
     // toggleOverflowOsContent();
+    setOverflowPageSlider();
     return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
     // toggleOverflowOsContent();
+    offOverflowPageSlider();
     scrollToTop();
     setPagesHeight();
   });

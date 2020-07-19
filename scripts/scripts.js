@@ -180,19 +180,19 @@ $(document).ready(function () {
   }
   
   const setOverflowPageSlider = () => {
-    SLIDER.animate({
-      'opacity': '0'
-    }, 500, () => {
-      SLIDER.hide();
-    });
+    // SLIDER.animate({
+    //   'opacity': '0'
+    // }, 500, () => {
+    //   SLIDER.hide();
+    // });
   }
   
   const offOverflowPageSlider = () => {    
-    SLIDER.show(0, () => {
-      SLIDER.animate({
-        'opacity': '1'
-      }, 500);
-    });
+    // SLIDER.show(0, () => {
+    //   SLIDER.animate({
+    //     'opacity': '1'
+    //   }, 500);
+    // });
   }
 
   const toggleModalSwipeme = () => {
@@ -318,14 +318,14 @@ $(document).ready(function () {
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
     // toggleOverflowOsContent();
-    setOverflowPageSlider();
+    // setOverflowPageSlider();
     return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
     // toggleOverflowOsContent();
-    offOverflowPageSlider();
+    // offOverflowPageSlider();
     scrollToTop();
     setPagesHeight();
   });

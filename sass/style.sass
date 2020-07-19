@@ -84,15 +84,11 @@ a:hover
 		&:active
 			background-color: $telegram_button
 
-.os-content
-	-webkit-overflow-scrolling: touch
-
 .header
 	position: fixed
 	left: 0px
 	width: 100%
 	z-index: 1
-	transform: translate3d(0,0,0)
 	&-overlay
 		position: relative
 		top: -10px
@@ -403,7 +399,6 @@ a:hover
 	left: 0
 	width: 100%
 	height: 115px
-	transform: translate3d(0,0,0)
 	&-overlay
 		position: fixed
 		bottom: -25px
@@ -437,7 +432,6 @@ a:hover
 	width: 100%
 
 .modalCallback
-	// ПОПРОБОВАТЬ С OPASITY СКРЫВАТЬ СЛАЙДЕР ИЛИ ЧЕРЕЗ ДИСПЛЕЙ
 	padding-bottom: 45px
 	position: fixed
 	left: 0px
@@ -448,7 +442,7 @@ a:hover
 	z-index: 2
 	overflow: scroll 
 	-webkit-overflow-scrolling: touch
-	transform: translateY(100%)
+	transform: translateY(-100%)
 	transition: all 0.4s linear
 	&-active
 		position: absolute
@@ -731,10 +725,13 @@ a:hover
 		// left: 40px
 	.page4-contacts span
 		font-size: 0.8em
+	.footer-overlay
+		bottom: -50px
 	.modalSwipeme, .modalSwipeme-content, .modalSite, .modalSite-content
 		height: 60vh
 	.modalSwipeme-text, .modalSite-text
 		margin-top: 10px
+		
 
 @media (max-height: 545px)
 	.page1-content

@@ -121,7 +121,7 @@ $(document).ready(function () {
   }
 
   const setPagesClickHandler = () => {
-    $('.page, .footer').on('click', event => {
+    $('.page-slider, .footer').on('click', event => {
       clickPageHandler(event);
     });
   }
@@ -218,7 +218,7 @@ $(document).ready(function () {
 
   // FAQ  
   FAQ.on('click', function (event) {
-    // event.stopPropagation();
+    event.stopPropagation();
     event.preventDefault();
     
     const target = event.target;

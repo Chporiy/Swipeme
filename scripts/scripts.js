@@ -180,19 +180,29 @@ $(document).ready(function () {
   }
   
   const setOverflowPageSlider = () => {
-    // SLIDER.animate({
-    //   'opacity': '0'
-    // }, 500, () => {
-    //   SLIDER.hide();
-    // });
+    const OS_CONTENT = $('.os-content');
+    const SLICK_LIST = $('.slick-list');
+    
+    $(OS_CONTENT).css('height', '100vh');
+    $(SLICK_LIST).css('height', '100vh');
+    SLIDER.animate({
+      'opacity': '0'
+    }, 500);
   }
   
   const offOverflowPageSlider = () => {    
-    // SLIDER.show(0, () => {
-    //   SLIDER.animate({
-    //     'opacity': '1'
-    //   }, 500);
-    // });
+    const OS_CONTENT = $('.os-content');
+    const SLICK_LIST = $('.slick-list');
+    console.log($(`.page${getCurrentSlide() + 1}`).height());
+
+    $(OS_CONTENT).css('height', '100%');
+    $(SLICK_LIST).css('height', $(`.page${getCurrentSlide() + 1}`).height());
+    // const OS_VIEWPORT = $('.os-viewport');
+    // const OS_CONTENT = $('.os-content');
+    $('body').css('height', '100%');
+    SLIDER.animate({
+      'opacity': '1'
+    }, 500);
   }
 
   const toggleModalSwipeme = () => {
@@ -253,7 +263,7 @@ $(document).ready(function () {
     clipAlways: false,
     scrollbars: {
       visibility: 'hidden',
-      touchSupport: false
+      touchSupport: true
     }
   });
 
@@ -316,16 +326,17 @@ $(document).ready(function () {
   
   // Modal Callback
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
+    scrollToTop();
     toggleModalCallback();
     // toggleOverflowOsContent();
-    // setOverflowPageSlider();
+    setOverflowPageSlider();
     return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
     // toggleOverflowOsContent();
-    // offOverflowPageSlider();
+    offOverflowPageSlider();
     scrollToTop();
     setPagesHeight();
   });

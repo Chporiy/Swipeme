@@ -180,17 +180,19 @@ $(document).ready(function () {
   }
   
   const setOverflowPageSlider = () => {
-    const OS_CONTENT = $('.os-content');
-    
-    SLIDER.css('overflow', 'hidden');
-    OS_CONTENT.css('height', '100vh');
+    SLIDER.animate({
+      'opacity': '0'
+    }, 500, () => {
+      SLIDER.hide();
+    });
   }
   
-  const offOverflowPageSlider = () => {
-    const OS_CONTENT = $('.os-content');
-    
-    SLIDER.css('overflow', 'auto');
-    OS_CONTENT.css('height', '100%');
+  const offOverflowPageSlider = () => {    
+    SLIDER.show(0, () => {
+      SLIDER.animate({
+        'opacity': '1'
+      }, 500);
+    });
   }
 
   const toggleModalSwipeme = () => {

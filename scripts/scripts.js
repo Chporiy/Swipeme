@@ -47,9 +47,8 @@ $(document).ready(function () {
       slidesToScroll: 1,
       speed: 300,
       swipeToSlide: true,
-      touchThreshold: 500,
+      touchThreshold: 5,
       variableWidth: true,
-      // useTransform: false,
       waitForAnimate: false,
       // responsive: [
       //   {
@@ -122,13 +121,14 @@ $(document).ready(function () {
   }
 
   const setPagesClickHandler = () => {
-    $('.page-slider, .footer').on('click', event => {
-      event.stopPropagation();
+    $('.page, .footer').on('click', event => {
       clickPageHandler(event);
     });
   }
 
   const clickPageHandler = (event) => {
+    if (event.isDefaultPrevented()) return false;
+
     let clientX = event.clientX;
     currentPageNumber = getCurrentSlide();    
   
@@ -218,7 +218,8 @@ $(document).ready(function () {
 
   // FAQ  
   FAQ.on('click', function (event) {
-    event.stopPropagation();
+    // event.stopPropagation();
+    event.preventDefault();
     
     const target = event.target;
     const faqBlock = $(target).hasClass('page7-FAQ__block') ? $(target) : $(target).parents('.page7-FAQ__block');

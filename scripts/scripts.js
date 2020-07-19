@@ -301,13 +301,13 @@ $(document).ready(function () {
   // Modal Callback
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
-    toggleOverflowOsContent();
+    // toggleOverflowOsContent();
     return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
-    toggleOverflowOsContent();
+    // toggleOverflowOsContent();
     scrollToTop();
     setPagesHeight();
   });

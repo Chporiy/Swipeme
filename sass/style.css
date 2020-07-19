@@ -198,7 +198,7 @@ a:hover {
 }
 
 .page1-content {
-  margin-top: 440px;
+  margin-top: 480px;
 }
 
 .page1-content__title {
@@ -681,6 +681,7 @@ a:hover {
 }
 
 .modalCallback-active {
+  position: absolute;
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
 }

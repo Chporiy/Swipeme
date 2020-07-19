@@ -123,6 +123,7 @@ $(document).ready(function () {
 
   const setPagesClickHandler = () => {
     $('.page-slider, .footer').on('click', event => {
+      event.stopPropagation();
       clickPageHandler(event);
     });
   }
@@ -300,7 +301,6 @@ $(document).ready(function () {
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
     toggleOverflowOsContent();
-    scrollToTop();
     return false;
   });
 
@@ -308,6 +308,7 @@ $(document).ready(function () {
     toggleModalCallback();
     toggleOverflowOsContent();
     scrollToTop();
+    setPagesHeight();
   });
   
   // Modal Video

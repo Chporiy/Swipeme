@@ -184,9 +184,18 @@ $(document).ready(function () {
     const SLICK_LIST = $('.slick-list');
     const SLICK_TRACK = $('.slick-track');
     
-    $(OS_CONTENT).css('height', '100vh');
-    $(SLICK_LIST).css('height', '100vh');
-    $(SLICK_TRACK).css('height', '100vh');
+    $(OS_CONTENT).css({
+      'height': '100vh',
+      'min-height': '-webkit-fill-available'
+    });
+    $(SLICK_LIST).css({
+      'height': '100vh',
+      'min-height': '-webkit-fill-available'
+    });
+    $(SLICK_TRACK).css({
+      'height': '100vh',
+      'min-height': '-webkit-fill-available'
+    });
     // $('.page').height(MODAL_CALLBACK.height());
 
     SLIDER.animate({
@@ -199,11 +208,17 @@ $(document).ready(function () {
     const SLICK_LIST = $('.slick-list');
     const SLICK_TRACK = $('.slick-track');
     
-    $(OS_CONTENT).css('height', '100%');
+    $(OS_CONTENT).css({
+      'height': '100%',
+      'min-height': '0'
+    });
     $(SLICK_LIST).css('height', $(`.page${getCurrentSlide() + 1}`).height());
-    $(SLICK_TRACK).css('height', '100%');
+    $(SLICK_TRACK).css({
+      'height': '100%',
+      'min-height': '0'
+    });
 
-    $('body').css('height', '100%');
+    // $('body').css('height', '100%');
     SLIDER.animate({
       'opacity': '1'
     }, 500);
@@ -340,7 +355,7 @@ $(document).ready(function () {
     toggleModalCallback();
     offOverflowPageSlider();
     scrollToTop();
-    // setPagesHeight();
+    setPagesHeight();
   });
   
   // Modal Video

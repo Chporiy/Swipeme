@@ -684,6 +684,8 @@ a:hover {
   z-index: 2;
   opacity: 1;
   pointer-events: auto;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .modalCallback-close {

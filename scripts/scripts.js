@@ -183,17 +183,18 @@ $(document).ready(function () {
     const OS_CONTENT = $('.os-content');
     const SLICK_LIST = $('.slick-list');
     const SLICK_TRACK = $('.slick-track');
+    const innerHeight = window.innerHeight;
     
     $(OS_CONTENT).css({
-      'height': '100vh',
+      'height': `${innerHeight}px`,
       'min-height': '-webkit-fill-available'
     });
     $(SLICK_LIST).css({
-      'height': '100vh',
+      'height': `${innerHeight}px`,
       'min-height': '-webkit-fill-available'
     });
     $(SLICK_TRACK).css({
-      'height': '100vh',
+      'height': `${innerHeight}px`,
       'min-height': '-webkit-fill-available'
     });
     // $('.page').height(MODAL_CALLBACK.height());

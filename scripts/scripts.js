@@ -182,9 +182,12 @@ $(document).ready(function () {
   const setOverflowPageSlider = () => {
     const OS_CONTENT = $('.os-content');
     const SLICK_LIST = $('.slick-list');
+    const SLICK_TRACK = $('.slick-track');
     
     $(OS_CONTENT).css('height', '100vh');
     $(SLICK_LIST).css('height', '100vh');
+    $(SLICK_TRACK).css('height', '100vh');
+
     SLIDER.animate({
       'opacity': '0'
     }, 500);
@@ -193,12 +196,12 @@ $(document).ready(function () {
   const offOverflowPageSlider = () => {    
     const OS_CONTENT = $('.os-content');
     const SLICK_LIST = $('.slick-list');
-    console.log($(`.page${getCurrentSlide() + 1}`).height());
-
+    const SLICK_TRACK = $('.slick-track');
+    
     $(OS_CONTENT).css('height', '100%');
     $(SLICK_LIST).css('height', $(`.page${getCurrentSlide() + 1}`).height());
-    // const OS_VIEWPORT = $('.os-viewport');
-    // const OS_CONTENT = $('.os-content');
+    $(SLICK_TRACK).css('height', '100%');
+
     $('body').css('height', '100%');
     SLIDER.animate({
       'opacity': '1'

@@ -14,6 +14,7 @@ body
 	font-family: 'Roboto Light', sans-serif
 	font-size: 10px
 	background-color: black
+	-webkit-overflow-scrolling: touch
 
 a
 	text-decoration: none
@@ -83,6 +84,9 @@ a:hover
 			outline: none
 		&:active
 			background-color: $telegram_button
+
+.os-viewport, .os-content
+	-webkit-overflow-scrolling: touch
 
 .header
 	position: fixed
@@ -432,7 +436,6 @@ a:hover
 	width: 100%
 
 .modalCallback
-	padding-bottom: 45px
 	position: fixed
 	left: 0px
 	top: 0px
@@ -529,6 +532,7 @@ a:hover
 				background: url(../img/social/whatsapp.png) no-repeat center
 		&__bottomText
 			margin-top: 25px
+			margin-bottom: 45px
 			font-size: 1.4em
 			line-height: 18px
 			text-align: center

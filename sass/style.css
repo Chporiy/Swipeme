@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto Light', sans-serif;
   font-size: 10px;
   background-color: black;
+  -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -126,6 +127,10 @@ a:hover {
 
 .button_telegram:active {
   background-color: #33ABE0;
+}
+
+.os-viewport, .os-content {
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
@@ -665,7 +670,6 @@ a:hover {
 }
 
 .modalCallback {
-  padding-bottom: 45px;
   position: fixed;
   left: 0px;
   top: 0px;
@@ -818,6 +822,7 @@ a:hover {
 
 .modalCallback-social__bottomText {
   margin-top: 25px;
+  margin-bottom: 45px;
   font-size: 1.4em;
   line-height: 18px;
   text-align: center;

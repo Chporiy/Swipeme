@@ -670,18 +670,13 @@ a:hover {
   height: 100%;
   background: #1F1F1F;
   z-index: 2;
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
+  display: none;
 }
 
 .modalCallback-active {
-  position: absolute;
-  -webkit-transform: translateY(0%);
-          transform: translateY(0%);
+  display: block;
 }
 
 .modalCallback-close {

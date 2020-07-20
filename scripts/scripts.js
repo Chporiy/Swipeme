@@ -187,6 +187,7 @@ $(document).ready(function () {
     $(OS_CONTENT).css('height', '100vh');
     $(SLICK_LIST).css('height', '100vh');
     $(SLICK_TRACK).css('height', '100vh');
+    // $('.page').height(MODAL_CALLBACK.height());
 
     SLIDER.animate({
       'opacity': '0'
@@ -329,19 +330,17 @@ $(document).ready(function () {
   
   // Modal Callback
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
-    scrollToTop();
     toggleModalCallback();
-    // toggleOverflowOsContent();
     setOverflowPageSlider();
+    scrollToTop();
     return false;
   });
 
   MODAL_CALLBACK_CLOSE_BUTTON.on('click', () => {
     toggleModalCallback();
-    // toggleOverflowOsContent();
     offOverflowPageSlider();
     scrollToTop();
-    setPagesHeight();
+    // setPagesHeight();
   });
   
   // Modal Video

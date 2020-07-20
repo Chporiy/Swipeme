@@ -102,15 +102,6 @@ a:hover
 		transform: translateX(-50%)
 		width: 100%
 		box-shadow: 0px 0px 70px 60px #1a1a1a
-	// &-overlay
-	// 	position: fixed
-	// 	top: 0px
-	// 	left: -30px
-	// 	width: 140%
-	// 	height: 60px
-	// 	background: #1A1A1A
-	// 	&_filter
-	//  		filter: blur(30px)
 	&-pages
 		display: flex
 		align-items: center
@@ -417,15 +408,6 @@ a:hover
 		bottom: calc(115px / 2)
 		width: 100%
 		box-shadow: 0px 0px 90px 90px #1a1a1a
-	// &-overlay
-		// position: fixed
-		// bottom: -25px
-		// left: -30px
-		// width: 140%
-		// height: 170px
-		// background: #1A1A1A
-		// &_filter
-	 	// 	filter: blur(45px)
 	&-content
 		display: flex
 		align-items: flex-end
@@ -457,13 +439,15 @@ a:hover
 	height: 100%
 	background: #1F1F1F
 	z-index: 2
-	overflow: scroll 
+	overflow: auto
 	-webkit-overflow-scrolling: touch
-	transform: translateY(100%)
-	transition: all 0.4s linear
+	display: none
+	// transform: translateY(100%)
+	// transition: all 0.4s linear
 	&-active
-		position: absolute
-		transform: translateY(0%)
+		// position: absolute
+		// transform: translateY(0%)
+		display: block
 	&-close
 		position: absolute
 		display: block

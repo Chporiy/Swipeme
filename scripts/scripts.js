@@ -185,18 +185,9 @@ $(document).ready(function () {
     const SLICK_TRACK = $('.slick-track');
     const innerHeight = window.innerHeight;
     
-    $(OS_CONTENT).css({
-      'height': `${innerHeight}px`,
-      'min-height': '-webkit-fill-available'
-    });
-    $(SLICK_LIST).css({
-      'height': `${innerHeight}px`,
-      'min-height': '-webkit-fill-available'
-    });
-    $(SLICK_TRACK).css({
-      'height': `${innerHeight}px`,
-      'min-height': '-webkit-fill-available'
-    });
+    $(OS_CONTENT).css('height', `${innerHeight}px`);
+    $(SLICK_LIST).css('height', `${innerHeight}px`);
+    $(SLICK_TRACK).css('height', `${innerHeight}px`);
     // $('.page').height(MODAL_CALLBACK.height());
 
     SLIDER.animate({
@@ -209,15 +200,9 @@ $(document).ready(function () {
     const SLICK_LIST = $('.slick-list');
     const SLICK_TRACK = $('.slick-track');
     
-    $(OS_CONTENT).css({
-      'height': '100%',
-      'min-height': '0'
-    });
+    $(OS_CONTENT).css('height', '100%');
     $(SLICK_LIST).css('height', $(`.page${getCurrentSlide() + 1}`).height());
-    $(SLICK_TRACK).css({
-      'height': '100%',
-      'min-height': '0'
-    });
+    $(SLICK_TRACK).css('height', '100%');
 
     // $('body').css('height', '100%');
     SLIDER.animate({

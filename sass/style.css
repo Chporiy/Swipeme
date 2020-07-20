@@ -671,14 +671,19 @@ a:hover {
   height: 100%;
   min-height: -webkit-fill-available;
   background: #1F1F1F;
-  z-index: 2;
+  z-index: -9;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  display: none;
+  opacity: 0;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  pointer-events: none;
 }
 
 .modalCallback-active {
-  display: block;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modalCallback-close {

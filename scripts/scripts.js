@@ -333,7 +333,8 @@ $(document).ready(function () {
   MODAL_CALLBACK_SHOW_BUTTON.on('click', () => {
     toggleModalCallback();
     setOverflowPageSlider();
-    scrollToTop();
+    // scrollToTop();
+    MODAL_CALLBACK.scrollTop(1);
     return false;
   });
 

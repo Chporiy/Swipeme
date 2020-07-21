@@ -672,7 +672,8 @@ a:hover {
   min-height: -webkit-fill-available;
   background: #1F1F1F;
   z-index: -9;
-  overflow: auto;
+  overflow: scroll;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   opacity: 0;
   -webkit-transition: all 0.4s linear;

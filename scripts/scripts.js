@@ -267,8 +267,7 @@ $(document).ready(function () {
   OverlayScrollbars($("body"), {
     clipAlways: false,
     scrollbars: {
-      visibility: 'hidden',
-      touchSupport: true
+      visibility: 'hidden'
     }
   });
 
@@ -335,8 +334,7 @@ $(document).ready(function () {
     setOverflowPageSlider();
     // scrollToTop();
     MODAL_CALLBACK.scrollTop(1);
-    MODAL_CALLBACK.css('transform', 'scale(1.01)');
-    MODAL_CALLBACK.scroll();
+    MODAL_CALLBACK.css('transform', 'scale(1.01) translateZ(0)');
     return false;
   });
 

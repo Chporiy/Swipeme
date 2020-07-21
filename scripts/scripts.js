@@ -188,7 +188,6 @@ $(document).ready(function () {
     $(OS_CONTENT).css('height', `${innerHeight}px`);
     $(SLICK_LIST).css('height', `${innerHeight}px`);
     $(SLICK_TRACK).css('height', `${innerHeight}px`);
-    // $('body').css('transform', 'scale(1)');
     // $('.page').height(MODAL_CALLBACK.height());
 
     SLIDER.animate({
@@ -222,21 +221,7 @@ $(document).ready(function () {
   }
  
  // Slider
-  enableSlider(SLIDER_OPTIONS);  
-  
-  if (isMobile.any()) {
-    setPagesClickHandler();
-  }
-  setPagesHeight();
-  setPagesWidth();
-  
-  if (isWindowLandscape()) {
-    toggleWarningBlock();
-    toggleOverflowOsContent();
-  }
-
-  PLAYER_MINI.volume = 0;
-  PLAYER_MINI.loop = true;
+  enableSlider(SLIDER_OPTIONS);
 
   SLIDER.on('click', event => {
     event.stopPropagation();
@@ -350,6 +335,7 @@ $(document).ready(function () {
     setOverflowPageSlider();
     // scrollToTop();
     MODAL_CALLBACK.scrollTop(1);
+    MODAL_CALLBACK.css('transform', 'scale(1.01)');
     return false;
   });
 
@@ -418,18 +404,18 @@ $(document).ready(function () {
     toggleOverflowOsContent();
   });
 
-  // if (isMobile.any()) {
-  //   setPagesClickHandler();
-  // }
-  // setPagesHeight();
-  // setPagesWidth();
+  if (isMobile.any()) {
+    setPagesClickHandler();
+  }
+  setPagesHeight();
+  setPagesWidth();
   
-  // if (isWindowLandscape()) {
-  //   toggleWarningBlock();
-  //   toggleOverflowOsContent();
-  // }
+  if (isWindowLandscape()) {
+    toggleWarningBlock();
+    toggleOverflowOsContent();
+  }
 
-  // PLAYER_MINI.volume = 0;
-  // PLAYER_MINI.loop = true;
+  PLAYER_MINI.volume = 0;
+  PLAYER_MINI.loop = true;
 });
 

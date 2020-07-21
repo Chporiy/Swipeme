@@ -433,8 +433,8 @@ a:hover
 	width: 100%
 
 .modalCallback
-	position: absolute
-	left: 0%
+	position: fixed
+	left: 0px
 	top: 0px
 	width: 100%
 	height: 100%
@@ -452,11 +452,10 @@ a:hover
 	&-active
 		// position: absolute
 		// transform: translateY(0%)
-		top: 0
 		z-index: 2
 		opacity: 1
 		pointer-events: auto
-		transform: scale(1)
+		// transform: scale(1)
 		// display: block
 	&-close
 		position: absolute

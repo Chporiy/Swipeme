@@ -689,6 +689,10 @@ a:hover {
   -webkit-overflow-scrolling: touch;
 }
 
+.modalCallback-content-active {
+  display: block;
+}
+
 .modalCallback-close {
   position: absolute;
   display: block;

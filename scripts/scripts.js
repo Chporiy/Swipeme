@@ -336,6 +336,7 @@ $(document).ready(function () {
     // scrollToTop();
     MODAL_CALLBACK.scrollTop(1);
     MODAL_CALLBACK.css('transform', 'scale(1.01)');
+    MODAL_CALLBACK.scroll();
     return false;
   });
 

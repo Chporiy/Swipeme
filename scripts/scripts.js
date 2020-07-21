@@ -160,6 +160,7 @@ $(document).ready(function () {
 
   const toggleModalCallback = () => {
     MODAL_CALLBACK.toggleClass('modalCallback-active');
+    $('.modalCallback-content').toggleClass('modalCallback-content-active');
   }
 
   const toggleModalVideo = () => {

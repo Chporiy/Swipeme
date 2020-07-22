@@ -19,7 +19,6 @@ $(document).ready(function () {
     MODAL_CALLBACK_SHOW_BUTTON = $('.footer-contact__button'),
     MODAL_CALLBACK_CLOSE_BUTTON = $('.modalCallback-close'), 
     FORM = $('.modalCallback-form'),
-    FORM_INPUT = $('.modalCallback-form__input'),
     MODAL_VIDEO = $('.modalVideo'),
     MODAL_VIDEO_SHOW_BUTTON = $('.footer-video'),
     MODAL_VIDEO_CLOSE_BUTTON = $('.modalVideo-close'),

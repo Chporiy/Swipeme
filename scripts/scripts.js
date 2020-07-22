@@ -9,9 +9,10 @@ $(document).ready(function () {
 
   let currentPageNumber = 0;
   let activePageNumber = 0;
+  let playerDuration;
+  let playerBig;
 
-  const FAQ = $('.page7-FAQ'), 
-    FAQ_BLOCK = $('.page7-FAQ__block'),
+  const FAQ = $('.page7-FAQ'),
     HEADER_PAGES = $('.header-pages'),
     SLIDER = $('.page-slider'),
     MODAL_CALLBACK = $('.modalCallback'),
@@ -28,13 +29,10 @@ $(document).ready(function () {
     MODAL_SITE = $('.modalSite'),
     MODAL_SITE_SHOW_BUTTON = $('.page4-yoursite__button'),
     MODAL_SITE_CLOSE_BUTTON = $('.modalSite-close'),
-    PLAYER_BIG = new Plyr('.player-big', {
-      controls: ['play-large', 'play', 'progress', 'current-time']
-    });
     PLAYER_MINI = new Plyr('.player-mini', {
       controls: [],
       muted: true
-    });
+    }),
     SLIDER_OPTIONS = {
       accessibility: false,
       arrows: false,
@@ -49,17 +47,8 @@ $(document).ready(function () {
       swipeToSlide: true,
       touchThreshold: 5,
       variableWidth: true,
-      waitForAnimate: false,
-      // responsive: [
-      //   {
-      //     breakpoint: 1000,
-      //     settings: {
-      //       touchThreshold: 5
-      //     }
-      //   }
-      // ]
-    },
-    PLAYER_DURATION = Math.floor(PLAYER_BIG.duration);
+      waitForAnimate: false
+    };
 
   const setPagesWidth = () => {
     if (isMobile.any()) {
@@ -189,7 +178,6 @@ $(document).ready(function () {
     $(OS_CONTENT).css('height', `${innerHeight}px`);
     $(SLICK_LIST).css('height', `${innerHeight}px`);
     $(SLICK_TRACK).css('height', `${innerHeight}px`);
-    // $('.page').height(MODAL_CALLBACK.height());
 
     SLIDER.animate({
       'opacity': '0'
@@ -205,7 +193,6 @@ $(document).ready(function () {
     $(SLICK_LIST).css('height', $(`.page${getCurrentSlide() + 1}`).height());
     $(SLICK_TRACK).css('height', '100%');
 
-    // $('body').css('height', '100%');
     SLIDER.animate({
       'opacity': '1'
     }, 500);
@@ -309,10 +296,14 @@ $(document).ready(function () {
   
   $(function(){
     $(".modalCallback-form__input").mask("+7 999 999-99-99", {
-      placeholder: "+7 000 000-00-00"
+      placeholder: "+7 000 000-00-00",
+      completed: function () {
+        FORM.find('button').prop('disabled', false);
+        FORM.find('button').toggleClass('button-disabled');
+      }
     });
   });
-  
+
   // FORM
   FORM.on('submit', function (event) {
     event.preventDefault();
@@ -335,7 +326,6 @@ $(document).ready(function () {
     setOverflowPageSlider();
     scrollToTop();
     MODAL_CALLBACK.scrollTop(1);
-    // MODAL_CALLBACK.css('transform', 'scale(1.01) translateZ(0)');
     return false;
   });
 
@@ -348,10 +338,23 @@ $(document).ready(function () {
   
   // Modal Video
   MODAL_VIDEO_SHOW_BUTTON.on('click', () => {
-    PLAYER_BIG.muted = false;
-    PLAYER_BIG.volume = 1;
+    if ($('.player-big').length === 0) {
+      MODAL_VIDEO_CLOSE_BUTTON.after(`
+        <video class="player-big" playsinline>
+          <source src="./video/video.mp4" type="video/mp4" />
+        </video>
+      `);
+
+      playerBig = new Plyr('.player-big', {
+        controls: ['play-large', 'play', 'progress', 'current-time']
+      });
+      playerDuration = Math.floor(playerBig.duration);
+    }
+
+    playerBig.muted = false;
+    playerBig.volume = 1;
     PLAYER_MINI.stop();
-    PLAYER_BIG.play();
+    playerBig.play();
     
     toggleModalVideo();
     scrollToTop();
@@ -360,10 +363,10 @@ $(document).ready(function () {
   });
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
-    const bigPlayerTime = Math.floor(PLAYER_BIG.currentTime);
-    PLAYER_BIG.muted = true;
-    PLAYER_BIG.volume = 0;
-    PLAYER_BIG.stop();
+    const bigPlayerTime = Math.floor(playerBig.currentTime);
+    playerBig.muted = true;
+    playerBig.volume = 0;
+    playerBig.stop();
     
     toggleModalVideo();
     scrollToTop();
@@ -371,7 +374,7 @@ $(document).ready(function () {
 
     PLAYER_MINI.volume = 0;
     PLAYER_MINI.play();
-    if (bigPlayerTime !== PLAYER_DURATION) {
+    if (bigPlayerTime !== playerDuration) {
       PLAYER_MINI.forward(bigPlayerTime);
     }
   });

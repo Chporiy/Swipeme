@@ -1,3 +1,10 @@
+@import 'modules/bootstrap-grid.min'
+@import 'modules/OverlayScrollbars.min'
+@import 'modules/plyr'
+@import 'modules/reset'
+@import 'modules/Roboto'
+@import 'modules/slick'
+	
 $text_color_dark: #000000
 $text_color_light: #ffffff
 $active_color: #FDCD70
@@ -40,6 +47,9 @@ a:hover
 	&:active
 		background-color: $active_color
 		outline: none
+	&-disabled
+		pointer-events: none
+		background-color: darken($active_color, 50%)
 	&_whatsapp
 		padding: 5px 10px
 		height: 70px
@@ -719,7 +729,7 @@ a:hover
 			font-size: 3.6em
 			line-height: 42px
 			text-align: center
-		
+
 @media (max-width: 320px)
 	body
 		font-size: 8px
@@ -775,10 +785,9 @@ a:hover
 		height: 812px !important
 		transform: translate(-50%, -50%) !important
 		overflow: hidden !important
-	.modalCallback
-		// display: none
-		// transform: translateY(500%)
-		// transition: all 0s
+	.modalCallback-content
+		overflow: hidden
+		overflow-y: hidden
 
 @media (min-width: 768px) and (max-height: 576px)
 	.os-content, .os-viewport, .os-padding
@@ -795,4 +804,3 @@ a:hover
 
 	.header, .footer
 		width: 375px
-  

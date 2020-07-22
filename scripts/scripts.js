@@ -296,11 +296,7 @@ $(document).ready(function () {
   
   $(function(){
     $(".modalCallback-form__input").mask("+7 999 999-99-99", {
-      placeholder: "+7 000 000-00-00",
-      completed: function () {
-        FORM.find('button').prop('disabled', false);
-        FORM.find('button').toggleClass('button-disabled');
-      }
+      placeholder: "+7 000 000-00-00"
     });
   });
 

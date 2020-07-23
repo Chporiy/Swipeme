@@ -9,7 +9,6 @@ $(document).ready(function () {
 
   let currentPageNumber = 0;
   let activePageNumber = 0;
-  let playerDuration;
   let playerBig;
 
   const FAQ = $('.page7-FAQ'),
@@ -343,7 +342,6 @@ $(document).ready(function () {
       playerBig = new Plyr('.player-big', {
         controls: ['play-large', 'play', 'progress', 'current-time']
       });
-      playerDuration = Math.floor(playerBig.duration);
     }
 
     playerBig.muted = false;
@@ -358,7 +356,6 @@ $(document).ready(function () {
   });
   
   MODAL_VIDEO_CLOSE_BUTTON.on('click', () => {
-    const bigPlayerTime = Math.floor(playerBig.currentTime);
     playerBig.muted = true;
     playerBig.volume = 0;
     playerBig.stop();
@@ -369,9 +366,6 @@ $(document).ready(function () {
 
     PLAYER_MINI.volume = 0;
     PLAYER_MINI.play();
-    if (bigPlayerTime !== playerDuration) {
-      PLAYER_MINI.forward(bigPlayerTime);
-    }
   });
   
   // MODAL SWIPEME

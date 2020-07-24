@@ -47,9 +47,6 @@ a:hover
 	&:active
 		background-color: $active_color
 		outline: none
-	&-disabled
-		pointer-events: none
-		background-color: darken($active_color, 50%)
 	&_whatsapp
 		padding: 5px 10px
 		height: 70px
@@ -443,18 +440,19 @@ a:hover
 	width: 100%
 
 .modalCallback
-	position: absolute
+	position: fixed
 	left: 0px
 	top: 0px
 	width: 100%
 	min-height: -webkit-fill-available
 	background: #1F1F1F
 	z-index: -9
-	opacity: 0
+	transform: translateY(100%)
 	transition: all 0.4s linear
 	&-active
+		position: absolute
+		transform: translateY(0%)
 		z-index: 2
-		opacity: 1
 	&-content
 		display: none
 		height: 100%

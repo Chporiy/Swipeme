@@ -55,7 +55,6 @@ $(document).ready(function () {
     } else {
       $('.page').width(375);
     }
-
   }
 
   const setPagesHeight = () => {
@@ -82,20 +81,6 @@ $(document).ready(function () {
     element.find('.page7-FAQ__toggle').text("+");
   }
 
-  const checkLeftSideClick = (clientX) => {
-    let documentWidth = $(document).width();
-    let halfWidth = documentWidth / 2;
-
-    return 0 <= clientX && clientX <= halfWidth;
-  }
-
-  const checkRightSideClick = (clientX) => {
-    let documentWidth = $(document).width();
-    let halfWidth = documentWidth / 2;
-
-    return documentWidth - halfWidth <= clientX && clientX <= documentWidth;
-  }
-
   const isWindowLandscape = () => {
     return ~screen.orientation.type.indexOf('landscape')
   }
@@ -106,33 +91,7 @@ $(document).ready(function () {
       warningBlock.toggleClass('warning-active');
     }
   }
-
-  const setPagesClickHandler = () => {
-    $('.page-slider, .footer').on('click', event => {
-      clickPageHandler(event);
-    });
-  }
-
-  const clickPageHandler = (event) => {
-    if (event.isDefaultPrevented()) return false;
-
-    let clientX = event.clientX;
-    currentPageNumber = getCurrentSlide();    
   
-      if (checkLeftSideClick(clientX)) {
-        if (currentPageNumber == 0) return false;
-
-        newPageNumber = currentPageNumber - 1;
-        SLIDER.slick('slickGoTo', newPageNumber);
-      } 
-      if (checkRightSideClick(clientX)) {
-        if (currentPageNumber == 7) return false;
-
-        newPageNumber = currentPageNumber + 1;
-        SLIDER.slick('slickGoTo', newPageNumber);
-      }
-  }
-
   const changePageIndicator = (newPageIndicatorNumber) => {
     let currentPageIndicator = $(`.header-pages__page_active`);
     let newPageIndicator = $(`.header-pages__page[data-number='${newPageIndicatorNumber}']`);
@@ -396,9 +355,6 @@ $(document).ready(function () {
     toggleOverflowOsContent();
   });
 
-  if (isMobile.any()) {
-    setPagesClickHandler();
-  }
   setPagesHeight();
   setPagesWidth();
   

